@@ -1,0 +1,6 @@
+Problem:
+    - The Get user route is not send the error msg if there is no user FIX-IT!!!!!!!!!!!!!!!!!
+
+TODO: 
+    - Enanche securities
+    - Better error handling

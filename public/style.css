@@ -1,0 +1,55 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    /* 10px = 1rem , 100% / 16px = 62.5%  */
+}
+
+body {
+    box-sizing: border-box;
+    font-family: 'Signika', sans-serif;
+    color: #141414;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.image-contanier{
+    position: relative;
+    width: 100%;
+}
+
+.image-contanier{
+    background-color:khaki;
+    width: inherit;
+    height: 8rem;
+}
+
+.cover-img{
+    margin: 1rem;
+    border-radius: 25px;
+    background-color: blueviolet;
+}
+
+
+.profile-pic{
+    width: 140px;
+    height: 140px;
+    padding: 8px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 21px rgba(0, 0, 0, 0.25);
+    border-radius: 100px;
+    position: relative;
+    left: 50%;
+    bottom: -55%;
+    transform: translateX(-50%);
+}
+
+.info-contanier{
+    padding: 1rem;
+}
