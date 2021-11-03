@@ -14,7 +14,7 @@ const linkSchema =  new mongoose.Schema({
     linkDescription: {
         type: String
     },
-    linkImage: String,
+    photo: String,
     user: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

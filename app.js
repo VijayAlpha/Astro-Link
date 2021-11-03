@@ -2,18 +2,26 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
+import AppError from "./utils/appError.js";
 import userRouter from './routes/userRoute.js';
 import linkRouter from './routes/linkRoute.js';
+import viewRouter from './routes/viewRouter.js';
 
 const app = express()
 
 dotenv.config();
 
+app.set('view engine', 'pug');
+app.set('views', './views');
+
+app.use(express.static('./public'));
+
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
-app.use('api/v1/user', userRouter);
-app.use('api/v1/link' , linkRouter);
+app.use('/', viewRouter);
+app.use('/user', userRouter);
+app.use('/link' , linkRouter);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

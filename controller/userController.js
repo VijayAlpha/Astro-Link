@@ -1,25 +1,9 @@
-import multer from 'multer';
+
 import sharp from 'sharp';
 import User from "../model/userModel.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 
-const multerStorage = multer.memoryStorage();
-
-const multerFilter = (req, file, cb) => {
-  if (file.mimetype.startsWith('image')) {
-    cb(null, true);
-  } else {
-    cb(new AppError('Not an image! Please upload only images.', 400), false);
-  }
-};
-
-const upload = multer({
-  storage: multerStorage,
-  fileFilter: multerFilter
-});
-
-export const uploadUserPhoto = upload.single('photo');
 
 export const resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
@@ -80,6 +64,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
   
     const filteredBody = filterObj(req.body, 'name', 'email' , 'userName' , 'photo', 'userBio' , 'socialLinks');
     if (req.file) filteredBody.photo = req.file.filename;
+
 
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
       new: true,

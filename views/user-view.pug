@@ -6,48 +6,34 @@ head
   link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
   link(href='https://fonts.googleapis.com/css2?family=Poppins&family=Signika:wght@400;500;600&display=swap' rel='stylesheet')
   link(rel='stylesheet' href='css/main.css')
-  title 3rd Person view
+  title= user.userName
 .image-box
   .image-box__cover-box
-    img.image-box__cover-img(src='img/cover-img.png' alt='')
+    img.image-box__cover-img(src=`img/users/${user.coverPhoto}` alt='')
   .image-box__profile-box
-    img.image-box__profile-img(src='img/profile.png' alt='')
+    img.image-box__profile-img(src=`img/users/${user.photo}` alt='')
 .text-box
-  h1.text-box__user-name Afshin Nanasa
-  p.text-box__user-bio
-    | Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-    | sint. Velit officia consequat duis enim velit mollit. Exercitation
-    | veniam consequat sunt nostrud amet.Exercitation veniam consequat sun
+  h1.text-box__user-name= user.userName  
+  p.text-box__user-bio= user.userBio
 .social-link
-  a.social-link__link(href='#')
+  a.social-link__link(href=`${user.socialLinks.facebook}`)
     img.social-link__img(src='./img/Facebook.png' alt='')
-  a.social-link__link(href='#')
+  a.social-link__link(href=`${user.socialLinks.facebook}`)
     img.social-link__img(src='./img/Twitter.png' alt='')
-  a.social-link__link(href='#')
+  a.social-link__link(href=`${user.socialLinks.facebook}`)
     img.social-link__img(src='./img/Snapchat - Alternate.png' alt='')
-  a.social-link__link(href='#')
+  a.social-link__link(href=`${user.socialLinks.facebook}`)
     img.social-link__img(src='./img/TikTok.png' alt='')
-  a.social-link__link(href='#')
+  a.social-link__link(href=`${user.socialLinks.facebook}`)
     img.social-link__img(src='./img/YouTube.png' alt='')
 .media-link
-  a.media-link__box(href='#')
-    img.media-link__img(src='./img/link-img.png' alt='')
-    .media-link__text-holder
-      h4.media-link__title Johnson &amp; Johnson
-      p.media-link__description Darrell Steward
-    img.media-link__icon(src='./img/link-icon.svg')
-  a.media-link__box(href='#')
-    img.media-link__img(src='./img/link-img-2.png' alt='')
-    .media-link__text-holder
-      h4.media-link__title Shop with amazon
-      p.media-link__description amazon.com/maicfil
-    img.media-link__icon(src='./img/link-icon.svg')
-  a.media-link__box(href='#')
-    img.media-link__img(src='./img/link-img-3.png' alt='')
-    .media-link__text-holder
-      h4.media-link__title Abstergo Ltd.
-      p.media-link__description 8502 Preston Rd. Inglewood....
-    img.media-link__icon(src='./img/link-icon.svg')
+  each link in user.links
+    a.media-link__box(href=`${link.link}`)
+      img.media-link__img(src=`./img/link-image/${link.photo}` alt='')
+      .media-link__text-holder
+        h4.media-link__title= link.linkName
+        p.media-link__description= link.linkDescription
+      img.media-link__icon(src='./img/link-icon.svg')
 .brand-tag
   span.brand-tag__powered-by Powered By
   span.brand-tag__app-name AstroLink

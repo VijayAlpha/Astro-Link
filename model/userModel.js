@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import validator from 'validator';
 import bcrypt  from 'bcryptjs';
-import Link from './linkModel.js';
 
 const userSchema =  new mongoose.Schema({
   userName: {
@@ -24,6 +23,9 @@ const userSchema =  new mongoose.Schema({
       type: String,
       default: 'default.jpg'
     },
+    coverPhoto: {
+      type: String,
+    },
     password: {
       type: String,
       required: [true, 'Please provide a password'],
@@ -44,7 +46,6 @@ const userSchema =  new mongoose.Schema({
     userBio: {
       type: String
     },
-    coverPhoto: String,
     socialLinks: {
       phone: {
         type: String,
