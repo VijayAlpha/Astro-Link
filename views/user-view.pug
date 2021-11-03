@@ -9,23 +9,22 @@ head
   title= user.userName
 .image-box
   .image-box__cover-box
-    img.image-box__cover-img(src=`img/users/${user.coverPhoto}` alt='')
+    img.image-box__cover-img(src=`img/users/${user.banner}` alt='')
   .image-box__profile-box
-    img.image-box__profile-img(src=`img/users/${user.photo}` alt='')
+    img.image-box__profile-img(src=`img/users/${user.avatar}` alt='')
 .text-box
-  h1.text-box__user-name= user.userName  
+  h1.text-box__user-name= user.userName
+  h1.text-box__user-name= user.name  
   p.text-box__user-bio= user.userBio
 .social-link
   a.social-link__link(href=`${user.socialLinks.facebook}`)
-    img.social-link__img(src='./img/Facebook.png' alt='')
+    img.social-link__img(src=`/img/facebook.png` alt='')
   a.social-link__link(href=`${user.socialLinks.facebook}`)
-    img.social-link__img(src='./img/Twitter.png' alt='')
+    img.social-link__img(src=`/img/facebook.png` alt='')
   a.social-link__link(href=`${user.socialLinks.facebook}`)
-    img.social-link__img(src='./img/Snapchat - Alternate.png' alt='')
+    img.social-link__img(src=`/img/facebook.png` alt='')
   a.social-link__link(href=`${user.socialLinks.facebook}`)
-    img.social-link__img(src='./img/TikTok.png' alt='')
-  a.social-link__link(href=`${user.socialLinks.facebook}`)
-    img.social-link__img(src='./img/YouTube.png' alt='')
+    img.social-link__img(src=`/img/facebook.png` alt='')
 .media-link
   each link in user.links
     a.media-link__box(href=`${link.link}`)

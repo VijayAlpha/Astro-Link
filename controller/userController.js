@@ -6,16 +6,28 @@ import AppError from "../utils/appError.js";
 
 
 export const resizeUserPhoto = catchAsync(async (req, res, next) => {
-  if (!req.file) return next();
 
-  req.file.filename = `user-pp-${req.user.id}.jpeg`;
+  if (!req.files) return next();
 
-  await sharp(req.file.buffer)
-    .resize(500, 500)
-    .toFormat('jpeg')
-    .jpeg({ quality: 90 })
-    .toFile(`public/img/users/${req.file.filename}`);
+  if(req.files.avatar){
+      req.files.avatar[0].filename = `user-pp-${req.user.id}.jpeg`;
 
+    await sharp(req.files.avatar[0].buffer)
+      .resize(500, 500)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`public/img/users/${req.files.avatar[0].filename}`);
+  }
+
+  if(req.files.banner){
+    req.files.banner[0].filename = `user-banner-${req.user.id}.jpeg`;
+
+    await sharp(req.files.banner[0].buffer)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`public/img/users/${req.files.banner[0].filename}`);
+  }
+  
   next();
 });
 
@@ -61,10 +73,13 @@ export const updateMe = catchAsync(async (req, res, next) => {
         )
       );
     }
-  
-    const filteredBody = filterObj(req.body, 'name', 'email' , 'userName' , 'photo', 'userBio' , 'socialLinks');
-    if (req.file) filteredBody.photo = req.file.filename;
+    
+    const filteredBody = filterObj(req.body, 'name', 'email' , 'userName' , 'avatar', 'banner', 'userBio' , 'socialLinks');
 
+    if(req.files){
+       if (req.files.avatar) filteredBody.avatar = req.files.avatar[0].filename;
+       if (req.files.banner) filteredBody.banner = req.files.banner[0].filename;
+    }  
 
     const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
       new: true,

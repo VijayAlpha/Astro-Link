@@ -17,3 +17,4 @@ const upload = multer({
 });
 
 export const uploadImage = upload.single('photo');
+export const uploadUserImage = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'banner', maxCount: 1 }])

@@ -19,11 +19,11 @@ const userSchema =  new mongoose.Schema({
       lowercase: true,
       validate: [validator.isEmail, 'Please provide a valid email']
     },
-    photo: {
+    avatar: {
       type: String,
       default: 'default.jpg'
     },
-    coverPhoto: {
+    banner: {
       type: String,
     },
     password: {
@@ -46,6 +46,18 @@ const userSchema =  new mongoose.Schema({
     userBio: {
       type: String
     },
+    // socialLinks:[
+    //   {
+    //     appName:  {
+    //       type: String,
+    //       required: [true, 'Please enter app name !'],
+    //     },
+    //     address: {
+    //       type: String,
+    //       required: [true, 'Please enter address !'],
+    //     }
+    //   }
+    // ]
     socialLinks: {
       phone: {
         type: String,
