@@ -13,3 +13,9 @@ export const getUser = catchAsync(async (req, res , next) =>{
 
     res.status(200).render('user-view', {user});
 });
+
+export const getLoginForm = (req, res) => {
+    res.status(200).render('login', {
+      title: 'Log into your account'
+    });
+};

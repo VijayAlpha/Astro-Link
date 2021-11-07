@@ -1,8 +1,10 @@
 import express from 'express';
-import {getUser} from '../controller/viewsController.js';
+import {getUser , getLoginForm} from '../controller/viewsController.js';
 
 const router = express.Router();
 
+router.get('/login', getLoginForm);
 router.get('/:username', getUser);
+
 
 export default router;

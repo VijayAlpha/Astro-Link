@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/main.css')
+    title Login
+  body
+    main
+      // LOGIN PAGE
+      .box-container.margin--large
+        .text--h1.color-primary Login
+        span.text-base--1  if you are already a user,easily log in
+      .box-container
+        form.form--login.box-container
+          input#email.input--text(type='email' placeholder='Email' required='')
+          input#password.input--text(type='password' placeholder='Password' required='' minlength='8')
+          button.btn.btn--primary(type='submit') Login
+      .box-container.margin--large
+        span.text-base--1.border-bottom.padding-bottom.margin-bottom
+          a.link(href='#') Forgot my password
+        span.text-base--1
+          | If you don't have a account create 
+          button.btn.btn--tertiary
+            a.link(href='/sign-in.html') Sign up
+
+    script(src='/js/index.js' type="module")
