@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from'cors';
+import cookieParser from "cookie-parser";
 
 import AppError from "./utils/appError.js";
 import userRouter from './routes/userRoute.js';
@@ -16,8 +18,11 @@ app.set('views', './views');
 
 app.use(express.static('./public'));
 
+app.use(cors());
+
 app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
+app.use(cookieParser());
 
 app.use('/', viewRouter);
 app.use('/user', userRouter);

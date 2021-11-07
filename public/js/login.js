@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 export const login = async (email, password) => {
   try {
@@ -13,7 +13,7 @@ export const login = async (email, password) => {
 
     if (res.data.status === 'success') {
       window.setTimeout(() => {
-        location.assign('/');
+        location.assign('/user/me');
       }, 1500);
     }
   } catch (err) {
