@@ -11,7 +11,5 @@ export const getUser = catchAsync(async (req, res , next) =>{
         return next(new AppError('No User found with that ID', 404));
     }
 
-    res.status(200).render('user-view', {
-        user
-      });
+    res.status(200).render('user-view', {user});
 });
