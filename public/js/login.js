@@ -14,10 +14,10 @@ export const login = async (email, password) => {
     if (res.data.status === 'success') {
       window.setTimeout(() => {
         location.assign('/user/me');
-      }, 1500);
+      }, 1000);
     }
   } catch (err) {
-    console.log(err)
+    console.log(err.response)
   }
 };
 

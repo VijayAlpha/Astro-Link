@@ -49,6 +49,7 @@ const signToken = (id) => {
   });
 
   export const login = catchAsync(async (req, res, next) => {
+    
     const { email, password } = req.body;
   
     // 1) Check if the email and password are exist
@@ -58,15 +59,12 @@ const signToken = (id) => {
   
     // 2) Check the user exist and password is correct
     const user = await User.findOne({ email }).select('+password'); // this will return false or error while there is no user in that given email address
-  
-    const passwordCheck = async () =>
-      await user.correctPassword(password, user.password); // this fun check the this given password and the pasword in the database is same or not, is same return true or else throw err that means falsy value
-  
-    if (!user || !passwordCheck) {
+     
+    if (!user || !(await user.correctPassword(password, user.password))) {
       // if the email or password is not correct throws(send res) 401 error to user
       return next(new AppError('Incorrect email or password', 401));
     }
-  
+
     // 3) if every thing is okay send token to client
     createSendToken(user, 200, res);
   });
