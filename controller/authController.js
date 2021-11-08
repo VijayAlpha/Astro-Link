@@ -67,6 +67,14 @@ const signToken = (id) => {
     // 3) if every thing is okay send token to client
     createSendToken(user, 200, res);
   });
+
+ export const logout = (req, res) => {
+    res.cookie('jwt', 'loggedout', {
+      expires: new Date(Date.now() + 10 * 1000),
+      httpOnly: true
+    });
+    res.status(200).json({ status: 'success' });
+  };
   
  export const protect = catchAsync(async (req, res, next) => {
 
