@@ -19,13 +19,12 @@ const signToken = (id) => {
       ),
       httpOnly: true,
     };
-  
-    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-  
+
+    // if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
     res.cookie('jwt', token, cookieOptions);
-  
+
     user.password = undefined;
-  
+
     res.status(statusCode).json({
       status: 'success',
       token, // the token is stores in user conmputer , then the protected routes will use it.(without this tokens other users can't use your personal infos)
@@ -78,6 +77,8 @@ const signToken = (id) => {
       req.headers.authorization.startsWith('Bearer')
     ) {
       token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
     }
   
     if (!token) {
