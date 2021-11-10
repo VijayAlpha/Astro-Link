@@ -19,3 +19,9 @@ export const getLoginForm = (req, res) => {
       title: 'Log into your account'
     });
 };
+
+export const getMe = catchAsync(async (req, res, next) => {
+    const user = req.user;
+
+    res.status(200).render('user-view', {user} );
+});

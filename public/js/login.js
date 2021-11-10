@@ -11,7 +11,7 @@ export const login = async (email, password) => {
 
     if (res.data.status === 'success') {
       window.setTimeout(() => {
-        location.assign('/api/v1/user/me');
+        location.assign('/me');
       }, 1000);
     }
   } catch (err) {
