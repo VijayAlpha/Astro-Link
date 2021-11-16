@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/main.css')
+    title sign-up
+  body
+    main
+      // SIGN UP
+      .box-container.margin--large
+         .text--h1.color-primary Sign Up
+         span.text-base--1 Welcome to astroLink
+      .box-container
+         form.form--signup.box-container
+          input#user-name.input--text(type='text' placeholder='User name')
+          input#name.input--text(type='text' placeholder='Name')
+          input#email.input--text(type='email' placeholder='Email')
+          input#password.input--text(type='password' placeholder='Password')
+          input#confirm-password.input--text(type='password' placeholder='Password Confirm')
+          button.btn.btn--primary(type='submit') Sign up
+      .box-container.margin--large
+         span.text-base--1
+          | If you alreday have a account Login
+          button.btn.btn--tertiary
+            a.link(href='/login.html') Log in
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src='/js/index.js' type="module")

@@ -20,6 +20,12 @@ export const getLoginForm = (req, res) => {
     });
 };
 
+export const getSignupForm = (req, res) => {
+    res.status(200).render('signup', {
+      title: 'create account'
+    });
+};
+
 export const getMe = catchAsync(async (req, res, next) => {
     const user = req.user;
 

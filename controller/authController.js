@@ -99,7 +99,7 @@ const signToken = (id) => {
     const decode = await promisify(jwt.verify)(token, process.env.JWT_SECRET); // this methode decode the token using our secretCode , and return the decode
   
     // 3) find the user
-    const freshUser = await User.findById(decode.id);
+    const freshUser = await User.findById(decode.id).populate('links');
   
     if (!freshUser) {
       return next(
