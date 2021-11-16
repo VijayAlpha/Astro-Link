@@ -1,7 +1,22 @@
 import { login , signup } from './login.js';
+import { addLink } from './addlink.js';
 
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
+const addLinkForm = document.querySelector('.form--add-link');
+
+
+if(addLinkForm){
+  addLinkForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const link = document.getElementById('link').value;
+    const linkName = document.getElementById('link-name').value;
+    const linkDescription = document.getElementById('link-description').value;
+    const photo = document.getElementById('link-image').value;
+
+    addLink(link , linkName , linkDescription , photo);
+  });
+}
 
 if (loginForm)
   loginForm.addEventListener('submit', e => {

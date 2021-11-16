@@ -28,6 +28,11 @@ export const getSignupForm = (req, res) => {
 
 export const getMe = catchAsync(async (req, res, next) => {
     const user = req.user;
+    res.status(200).render('userview', {user} );
+});
 
-    res.status(200).render('user-view', {user} );
+export const getAddLink = catchAsync(async (req, res, next) => {
+    res.status(200).render('addLink', {
+        title: "add Link"
+    });
 });

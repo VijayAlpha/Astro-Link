@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/main.css')
+    title Adding Link
+  body
+    main
+      .box-container.margin--large
+        .text--h1 Add Link
+      form.form--add-link.box-container
+        input#link.input--text(type='text' placeholder='Link')
+        input#link-name.input--text(type='text' placeholder='Link Name')
+        input#link-description.input--text(type='text' placeholder='Description')
+        input#link-image.input--text(type='file' placeholder='Link Image')
+        button.btn.btn--primary(type='submit') Save
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src='/js/index.js' type="module")

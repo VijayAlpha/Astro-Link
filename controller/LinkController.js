@@ -18,7 +18,6 @@ export const resizeLinkPhoto = catchAsync(async (req, res, next) => {
 export const createLink = catchAsync( async (req , res , next)=>{
     if (!req.body.user) req.body.user = req.user.id;
 
-    console.log(req.file);
     if (req.file) req.body.photo = req.file.filename;
 
     const link = await Link.create(req.body);
@@ -30,7 +29,6 @@ export const createLink = catchAsync( async (req , res , next)=>{
 })
 
 export const getLink = catchAsync( async (req , res , next)=>{
-
     const link = await Link.find().populate('user');
 
     res.status(201).json({
