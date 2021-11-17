@@ -74,7 +74,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
       );
     }
     
-    const filteredBody = filterObj(req.body, 'name', 'email' , 'userName' , 'avatar', 'banner', 'userBio' , 'socialLinks');
+    const filteredBody = filterObj(req.body, 'name','userName','userBio','avatar','banner','email' ,'socialLinks');
 
     if(req.files){
        if (req.files.avatar) filteredBody.avatar = req.files.avatar[0].filename;

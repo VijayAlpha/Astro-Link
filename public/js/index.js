@@ -1,10 +1,23 @@
 import { login , signup } from './login.js';
 import { addLink } from './addlink.js';
+import { userSettings } from './settings.js';
 
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
 const addLinkForm = document.querySelector('.form--add-link');
+const userSettingsForm = document.querySelector('.form--user-settings');
 
+if(userSettingsForm){
+  userSettingsForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const userName = document.getElementById('user-name').value;
+    const userBio = document.getElementById('user-bio').value;
+    const email = document.getElementById('email').value;
+
+    userSettings(name , userName , userBio , email);
+  });
+}
 
 if(addLinkForm){
   addLinkForm.addEventListener('submit', e => {
