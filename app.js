@@ -5,6 +5,7 @@ import cors from'cors';
 import cookieParser from "cookie-parser";
 
 import AppError from "./utils/appError.js";
+import globalErrorHandler from './controller/errorController.js';
 import userRouter from './routes/userRoute.js';
 import linkRouter from './routes/linkRoute.js';
 import viewRouter from './routes/viewRouter.js';
@@ -31,6 +32,8 @@ app.use('/', viewRouter);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
+
+app.use(globalErrorHandler);
 
 const PORT = process.env.PORT || 3000;
 
