@@ -31,8 +31,20 @@ export const getMe = catchAsync(async (req, res, next) => {
     res.status(200).render('userview', {user} );
 });
 
+export const getSettings = (req, res) => {
+    res.status(200).render('settings', {
+      title: 'Settings'
+    });
+};
+
 export const getAddLink = catchAsync(async (req, res, next) => {
     res.status(200).render('addLink', {
         title: "add Link"
     });
 });
+
+export const getSocialLinks = (req, res) => {
+    res.status(200).render('social-links', {
+      title: 'create account'
+    });
+};

@@ -1,0 +1,25 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/main.css')
+  title sign-up
+main
+  .box-container.margin--large
+    .text--h1 Settings
+  .box-container
+    label.text-base--2.margin--side(for='user-name') Name
+    input#user-name.input--text(type='text' placeholder='Name')
+    label.text-base--2.margin--side(for='user-name') Username
+    input.input--text(type='text' placeholder='Username')
+    label.text-base--2.margin--side(for='user-name') Bio
+    textarea#user-bio.input--text(name='user-bio' cols='30' rows='10' placeholder='Bio')
+  .box-container
+    .text--h2.padding--big Account settings
+    label.text-base--2.margin--side(for='user-name') Email
+    input#email.input--text(type='email' name='email' placeholder='E-mail')
+    label.text-base--2.margin--side(for='user-name') Password
+    input.input--text(type='password' placeholder='Password')
+    label.text-base--2.margin--side(for='user-name') Password Confirm
+    input.input--text(type='password' placeholder='Password confirm')
+    button.btn.btn--primary Save
