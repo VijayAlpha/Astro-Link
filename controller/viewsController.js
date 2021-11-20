@@ -11,7 +11,7 @@ export const getUser = catchAsync(async (req, res, next) => {
     return next(new AppError('No User found with that ID', 404));
   }
 
-  res.status(200).render('user-view', { user });
+  res.status(200).render('userview', { user });
 });
 
 export const getLoginForm = (req, res) => {
@@ -28,7 +28,8 @@ export const getSignupForm = (req, res) => {
 
 export const getMe = catchAsync(async (req, res, next) => {
   const user = req.user;
-  res.status(200).render('userview', { user });
+  const loggedIn = req.loggedIn;
+  res.status(200).render('userview', { user  , loggedIn});
 });
 
 export const getSettings = (req, res) => {

@@ -108,6 +108,7 @@ const signToken = (id) => {
     }
   
     // GRANT ACCESS TO THE PROTECTED ROUTE
+    req.loggedIn = true;
     req.user = freshUser;
   
     next();
