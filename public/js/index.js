@@ -22,12 +22,16 @@ if(userSettingsForm){
 if(addLinkForm){
   addLinkForm.addEventListener('submit', e => {
     e.preventDefault();
-    const link = document.getElementById('link').value;
-    const linkName = document.getElementById('link-name').value;
-    const linkDescription = document.getElementById('link-description').value;
-    const photo = document.getElementById('link-image').value;
+    const form = new FormData();
+    form.append('link', document.getElementById('link').value);
+    form.append('linkName', document.getElementById('link-name').value);
+    form.append('linkDescription', document.getElementById('link-description').value);
+    form.append('photo', document.getElementById('link-image').files[0]);
 
-    addLink(link , linkName , linkDescription , photo);
+    // const linkName = document.getElementById('link-name').value;
+    // const linkDescription = document.getElementById('link-description').value;
+    // const photo = document.getElementById('link-image').value;
+    addLink(form);
   });
 }
 
