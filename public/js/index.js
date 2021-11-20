@@ -10,12 +10,20 @@ const userSettingsForm = document.querySelector('.form--user-settings');
 if(userSettingsForm){
   userSettingsForm.addEventListener('submit', e => {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const userName = document.getElementById('user-name').value;
-    const userBio = document.getElementById('user-bio').value;
-    const email = document.getElementById('email').value;
+    const form = new FormData();
+    form.append('name', document.getElementById('name').value);
+    form.append('userName', document.getElementById('user-name').value);
+    form.append('userBio', document.getElementById('user-bio').value);
+    form.append('email', document.getElementById('email').value);
 
-    userSettings(name , userName , userBio , email);
+    form.append('avatar', document.getElementById('profile-image').files[0]);
+
+    // const name = document.getElementById('name').value;
+    // const userName = document.getElementById('user-name').value;
+    // const userBio = document.getElementById('user-bio').value;
+    // const email = document.getElementById('email').value;
+
+    userSettings(form);
   });
 }
 

@@ -54,10 +54,12 @@ html(lang='en')
 
       each link in user.links    
         a(href=`${link.link}` class='media-link__box' target='_blank')
-          img(src=`./img/link-image/${link.photo}` alt='' class='media-link__img')
+          if link.photo
+            img(src=`./img/link-image/${link.photo}` alt='' class='media-link__img')
           div(class='media-link__text-holder')
             h4(class='media-link__title')= link.linkName
-            p(class='media-link__description')= link.linkDescription
+            if link.linkDescription
+              p(class='media-link__description')= link.linkDescription
           img(class='media-link__icon' src='./img/link-icon.svg')
     footer
       .brand-tag

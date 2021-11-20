@@ -9,16 +9,19 @@ main
     .text--h1 Settings
   form.form--user-settings
     .box-container
+      label.text-base--2.margin--side(for='profile-image') Profile Image
+      input#profile-image.input--text(type='file' accept='image/*' placeholder='Profile Image')
       label.text-base--2.margin--side(for='name') Name
-      input#name.input--text(type='text' placeholder='Name')
+      input#name.input--text(type='text' value=`${user.name}` placeholder='Name')
       label.text-base--2.margin--side(for='user-name') Username
-      input#user-name.input--text(type='text' placeholder='Username')
+      input#user-name.input--text(type='text' value=`${user.userName}` placeholder='Username')
       label.text-base--2.margin--side(for='user-bio') Bio
       textarea#user-bio.input--text(name='user-bio' cols='30' rows='10' placeholder='Bio')
+        = user.userBio
     .box-container
       .text--h2.padding--big Account settings
       label.text-base--2.margin--side(for='email') Email
-      input#email.input--text(type='email' name='email' placeholder='E-mail')
+      input#email.input--text(type='email' name='email' value=`${user.email}` placeholder='E-mail')
       label.text-base--2.margin--side(for='password') Password
       input#password.input--text(type='password' placeholder='Password')
       label.text-base--2.margin--side(for='confirm-password') Password Confirm

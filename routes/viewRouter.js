@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/login', getLoginForm);
 router.get('/signup', getSignupForm);
 router.get('/me' , protect , getMe);
-router.get('/settings', getSettings);
+router.get('/settings', protect , getSettings);
 router.get('/add-link', getAddLink);
 router.get('/social-links', getSocialLinks);
 router.get('/:username', getUser);
