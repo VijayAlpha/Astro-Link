@@ -9,7 +9,7 @@ export const userSettings = async (data) => {
       if (res.data.status === 'success') {
         window.setTimeout(() => {
           location.assign('/me');
-        }, 1000);
+        }, 500);
       }
     } catch (err) {
       console.log(err.response)

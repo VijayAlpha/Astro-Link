@@ -9,6 +9,8 @@ main
     .text--h1 Settings
   form.form--user-settings
     .box-container
+      label.text-base--2.margin--side(for='banner-image') Banner Image
+      input#banner-image.input--text(type='file' accept='image/*' placeholder='Banner Image')
       label.text-base--2.margin--side(for='profile-image') Profile Image
       input#profile-image.input--text(type='file' accept='image/*' placeholder='Profile Image')
       label.text-base--2.margin--side(for='name') Name

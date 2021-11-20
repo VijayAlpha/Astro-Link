@@ -16,7 +16,12 @@ if(userSettingsForm){
     form.append('userBio', document.getElementById('user-bio').value);
     form.append('email', document.getElementById('email').value);
 
-    form.append('avatar', document.getElementById('profile-image').files[0]);
+    const profilePic = document.getElementById('profile-image').files[0]
+    const bannerPic = document.getElementById('banner-image').files[0]
+    if (profilePic)
+     form.append('avatar', profilePic);
+    if (bannerPic)
+     form.append('banner' , bannerPic);
 
     // const name = document.getElementById('name').value;
     // const userName = document.getElementById('user-name').value;
