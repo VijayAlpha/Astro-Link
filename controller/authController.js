@@ -73,7 +73,10 @@ const signToken = (id) => {
       expires: new Date(Date.now() + 10 * 1000),
       httpOnly: true
     });
-    res.status(200).json({ status: 'success' });
+    // this shortcut for front-end to redirect /login route
+    res.status(200).redirect('/login');
+    // For api use
+    // res.status(200).json({ status: 'success' });
   };
   
  export const protect = catchAsync(async (req, res, next) => {

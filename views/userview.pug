@@ -10,6 +10,18 @@ html(lang='en')
     link(rel='stylesheet' href='css/main.css')
     title= `AstroLink | ${user.name}`
   body
+    .more-option
+      input#navi-toggle.more-option__checkbox(type='checkbox')
+      label.more-option__icon(for='navi-toggle')
+        img.more-option__icon--img(src='./img/more-option-icon--white.svg')
+      .more-option__list
+        ul
+          li.more-option__list--option
+            a(href='/logout') Logout
+          li.more-option__list--option
+            a(href='/report') Report
+          li.more-option__list--option
+            a(href='/signup') Sign-up
     .image-box
       div(class='image-box__cover-box')
         img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
