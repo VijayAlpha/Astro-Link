@@ -9,10 +9,14 @@ main
     .text--h1 Settings
   form.form--user-settings
     .box-container
-      label.text-base--2.margin--side(for='banner-image') Banner Image
-      input#banner-image.input--text(type='file' accept='image/*' placeholder='Banner Image')
-      label.text-base--2.margin--side(for='profile-image') Profile Image
-      input#profile-image.input--text(type='file' accept='image/*' placeholder='Profile Image')
+      //- banner image 
+      label.text-base--2.margin--side(for='banner-image' class='image-box__cover-box')
+        img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
+      input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
+      //- profile image
+      label.text-base--2.margin--side(for='profile-image' class='image-box__profile-box') 
+         img(src=`img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
+      input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
       label.text-base--2.margin--side(for='name') Name
       input#name.input--text(type='text' value=`${user.name}` placeholder='Name')
       label.text-base--2.margin--side(for='user-name') Username
