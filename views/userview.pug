@@ -10,6 +10,18 @@ html(lang='en')
     link(rel='stylesheet' href='css/main.css')
     title= `AstroLink | ${user.name}`
   body
+    .more-option
+      input#navi-toggle.more-option__checkbox(type='checkbox')
+      label.more-option__icon(for='navi-toggle')
+        img.more-option__icon--img(src='./img/more-option-icon--white.svg')
+      .more-option__list
+        ul
+          li.more-option__list--option
+            a(href='/logout') Logout
+          li.more-option__list--option
+            a(href='/report') Report
+          li.more-option__list--option
+            a(href='/signup') Sign-up
     .image-box
       div(class='image-box__cover-box')
         img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
@@ -19,14 +31,16 @@ html(lang='en')
       h1(class='text-box__name')= user.name  
       h1(class='text-box__user-name')= `@${user.userName}`
       p(class='text-box__user-bio')= user.userBio
-    .button-container
-      button.btn.btn--secondary
-        a.link(href='/settings') Edit Profile
-      button.btn.btn--primary Share
+    if loggedIn
+      .button-container
+        button.btn.btn--secondary
+          a.link(href='/settings') Edit Profile
+        button.btn.btn--primary Share
     .text--h2.border-bottom.margin-bottom.padding--up-side-down Soical
     .social-link
-      a(href='/social-links' class='social-link__link')
-        img(src='./img/plus.svg' alt='' class='social-link__img')
+      if loggedIn
+        a(href='/social-links' class='social-link__link')
+          img(src='./img/plus.svg' alt='' class='social-link__img')
       
       a(href='#' class='social-link__link' target='_blank')
         img(src='./img/Facebook.png' alt='' class='social-link__img')
@@ -46,18 +60,20 @@ html(lang='en')
         img(src='./img/Twitter.png' alt='' class='social-link__img')
     .text--h2.border-bottom.margin-bottom.padding--up-side-down Links
     .media-link
-    
-      a(href='/add-link' class='media-link__box')
-        img(src='./img/plus.svg' alt='' class='media-link__img--plus ')
-        div(class='media-link__text-holder')
-          h4(class='media-link__title') Add link
+      if loggedIn
+        a(href='/add-link' class='media-link__box')
+          img(src='./img/plus.svg' alt='' class='media-link__img--plus ')
+          div(class='media-link__text-holder')
+            h4(class='media-link__title') Add link
 
       each link in user.links    
         a(href=`${link.link}` class='media-link__box' target='_blank')
-          img(src=`./img/link-image/${link.photo}` alt='' class='media-link__img')
+          if link.photo
+            img(src=`./img/link-image/${link.photo}` alt='' class='media-link__img')
           div(class='media-link__text-holder')
             h4(class='media-link__title')= link.linkName
-            p(class='media-link__description')= link.linkDescription
+            if link.linkDescription
+              p(class='media-link__description')= link.linkDescription
           img(class='media-link__icon' src='./img/link-icon.svg')
     footer
       .brand-tag
