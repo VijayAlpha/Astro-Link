@@ -6,7 +6,7 @@ const mediaLinkOption_linkDelete= document.querySelector('#link-option--delete')
 
 mediaLinkBox.addEventListener('click', function(e) {
 
-  if(e.target.parentNode.className == "media-link__box"){
+  if(e.target.parentNode.className == "media-link__box" && e.target.className == "media-link__icon"){
     mediaLinkOption.style.display = "block";
 
     mediaLinkOption_open.href = e.target.parentNode.dataset.link;
