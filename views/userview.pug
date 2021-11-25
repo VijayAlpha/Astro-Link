@@ -10,6 +10,7 @@ html(lang='en')
     link(rel='stylesheet' href='css/main.css')
     title= `AstroLink | ${user.name}`
   body
+    //- App Option TAB
     .more-option
       input#navi-toggle.more-option__checkbox(type='checkbox')
       label.more-option__icon(for='navi-toggle')
@@ -22,6 +23,17 @@ html(lang='en')
             a(href='/report') Report
           li.more-option__list--option
             a(href='/signup') Sign-up
+    //- Link Option TAB
+    .link-option
+      div
+        ul.link-option__list
+          li.link-option__option
+            a#link-option--open(href='#') Open
+          li.link-option__option
+            a#link-option--edit(href='#') Edit
+          li.link-option__option
+            a#link-option--delete(href='#') Delete
+
     .image-box
       div(class='image-box__cover-box')
         img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
@@ -65,16 +77,28 @@ html(lang='en')
           img(src='./img/plus.svg' alt='' class='media-link__img--plus ')
           div(class='media-link__text-holder')
             h4(class='media-link__title') Add link
-
-      each link in user.links    
-        a(href=`${link.link}` class='media-link__box' target='_blank')
-          if link.photo
-            img(src=`./img/link-image/${link.photo}` alt='' class='media-link__img')
-          div(class='media-link__text-holder')
-            h4(class='media-link__title')= link.linkName
-            if link.linkDescription
-              p(class='media-link__description')= link.linkDescription
-          img(class='media-link__icon' src='./img/link-icon.svg')
+      if !loggedIn
+        each link in user.links    
+          a(href=`${link.link}` class='media-link__box' target='_blank')
+            if link.photo
+              img(src=`./img/link-image/${link.photo}` alt='' class='media-link__img')
+            div(class='media-link__text-holder')
+              h4(class='media-link__title')= link.linkName
+              if link.linkDescription
+                p(class='media-link__description')= link.linkDescription
+            img(class='media-link__icon' src='./img/link-icon.svg')
+      else   
+        each link in user.links
+          .media-link__box(id=`${link.id}` data-link=`${link.link}`)
+            if link.photo
+              img.media-link__img(src=`./img/link-image/${link.photo}` alt='')
+            .media-link__text-holder
+              h4.media-link__title= link.linkName
+              if link.linkDescription
+                p.media-link__description= link.linkDescription
+            img.media-link__icon(src='./img/more-option-icon--black.svg')
+    
+    script(src='/js/style.js' type="module")
     footer
       .brand-tag
         span(class='brand-tag__powered-by') Powered By

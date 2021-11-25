@@ -204,6 +204,46 @@ body {
   border: 1.8rem solid #FFF;
 }
 
+.link-option {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.link-option__list {
+  position: absolute;
+  width: 40%;
+  left: 50%;
+  top: 50%;
+  padding: 2rem;
+  -webkit-transform: translate(-55%, -50%);
+          transform: translate(-55%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  font-size: 2.4rem;
+  border-radius: 1.2rem;
+  list-style: none;
+  text-rendering: optimizeLegibility;
+}
+
+.link-option__list :not(:last-child) {
+  border-bottom: rgba(255, 255, 255, 0.445) solid 2px;
+}
+
+.link-option__option {
+  padding: 1rem;
+}
+
+.link-option__option > a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .link {
   text-decoration: none;
   cursor: pointer;
