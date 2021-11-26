@@ -1,6 +1,7 @@
 import sharp from 'sharp';
 import Link from "../model/linkModel.js";
 import catchAsync from "../utils/catchAsync.js";
+import AppError from "../utils/appError.js";
 
 export const resizeLinkPhoto = catchAsync(async (req, res, next) => {
     if (!req.file) return next();

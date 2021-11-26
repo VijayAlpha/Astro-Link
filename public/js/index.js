@@ -42,11 +42,19 @@ if(userSettingsForm){
 if(addLinkForm){
   addLinkForm.addEventListener('submit', e => {
     e.preventDefault();
+
+    const link = document.getElementById('link').value;
+    const linkName = document.getElementById('link-name').value;
+    const linkDescription = document.getElementById('link-description').value;
+    const photo = document.getElementById('link-image').files[0]
+    
     const form = new FormData();
-    form.append('link', document.getElementById('link').value);
-    form.append('linkName', document.getElementById('link-name').value);
-    form.append('linkDescription', document.getElementById('link-description').value);
-    form.append('photo', document.getElementById('link-image').files[0]);
+    form.append('link', link);
+    form.append('linkName', linkName );
+    if(linkDescription)
+      form.append('linkDescription', linkDescription);
+    if(photo)
+      form.append('photo', photo);
 
     // const linkName = document.getElementById('link-name').value;
     // const linkDescription = document.getElementById('link-description').value;
