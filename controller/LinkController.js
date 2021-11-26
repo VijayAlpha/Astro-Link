@@ -28,6 +28,19 @@ export const createLink = catchAsync( async (req , res , next)=>{
     })
 })
 
+export const deleteLink = catchAsync( async (req , res , next)=>{
+
+    const link = await Link.findByIdAndDelete(req.body.linkId);
+
+    if (!link) {
+        return next(new AppError('No link found with that ID', 404));
+    }
+
+    res.status(204).json({
+        status: 'success'
+    })
+})
+
 export const getLink = catchAsync( async (req , res , next)=>{
     const link = await Link.find().populate('user');
 

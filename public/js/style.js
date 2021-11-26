@@ -10,7 +10,7 @@ mediaLinkBox.addEventListener('click', function(e) {
     mediaLinkOption.style.display = "block";
 
     mediaLinkOption_open.href = e.target.parentNode.dataset.link;
-    mediaLinkOption_linkDelete.href = e.target.parentNode.id;
+    mediaLinkOption_linkDelete.dataset.linkId = e.target.parentNode.id;
   }
   
 });

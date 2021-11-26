@@ -15,3 +15,21 @@ export const addLink = async (data) => {
       console.log(err.response)
     }
   };
+
+  export const deleteLink = async (linkId) => {
+    try {
+      const res = await axios({
+        method: 'DELETE',
+        url: '/api/v1/link/deleteLink',
+        data: {
+          linkId
+        }
+      });
+
+      if (res.status === 204) {
+        location.assign('/me');
+      }
+    } catch (err) {
+      console.log(err.response);
+    }
+  };

@@ -32,7 +32,7 @@ html(lang='en')
           li.link-option__option
             a#link-option--edit(href='#') Edit
           li.link-option__option
-            a#link-option--delete(href='#') Delete
+            a#link-option--delete(data-linkId='') Delete
 
     .image-box
       div(class='image-box__cover-box')
@@ -96,10 +96,11 @@ html(lang='en')
               h4.media-link__title= link.linkName
               if link.linkDescription
                 p.media-link__description= link.linkDescription
-            img.media-link__icon(src='./img/more-option-icon--black.svg')
-    
-    script(src='/js/style.js' type="module")
+            img.media-link__icon(src='./img/more-option-icon--black.svg')    
     footer
       .brand-tag
         span(class='brand-tag__powered-by') Powered By
         span(class='brand-tag__app-name') AstroLink
+    script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src='/js/style.js' type="module")
+    script(src='/js/index.js' type="module")

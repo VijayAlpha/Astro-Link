@@ -1,11 +1,18 @@
 import { login , signup } from './login.js';
-import { addLink } from './addlink.js';
+import { addLink , deleteLink } from './link.js';
 import { userSettings } from './settings.js';
 
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
 const addLinkForm = document.querySelector('.form--add-link');
 const userSettingsForm = document.querySelector('.form--user-settings');
+const mediaLinkOption_linkDelete= document.querySelector('#link-option--delete');
+
+if(mediaLinkOption_linkDelete){
+  mediaLinkOption_linkDelete.addEventListener('click' , () => {
+    deleteLink(mediaLinkOption_linkDelete.dataset.linkId);
+  })
+}
 
 if(userSettingsForm){
   userSettingsForm.addEventListener('submit', e => {
