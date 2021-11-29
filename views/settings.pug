@@ -24,14 +24,20 @@ main
       label.text-base--2.margin--side(for='user-bio') Bio
       textarea#user-bio.input--text(name='user-bio' cols='30' rows='10' placeholder='Bio')
         = user.userBio
-    .box-container
-      .text--h2.padding--big Account settings
       label.text-base--2.margin--side(for='email') Email
       input#email.input--text(type='email' name='email' value=`${user.email}` placeholder='E-mail')
-      label.text-base--2.margin--side(for='password') Password
-      input#password.input--text(type='password' placeholder='Password')
-      label.text-base--2.margin--side(for='confirm-password') Password Confirm
-      input#confirm-password.input--text(type='password' placeholder='Password confirm')
-      button.btn.btn--primary(type='submit') Save
+      button.btn.btn--primary.btn--save-data(type='submit') Save
+  
+  form.form--user-password
+    .box-container
+      .text--h2.padding--big Password settings
+      label.text-base--2.margin--side(for='password-current') Current Password
+      input#password-current.input--text(type='password' placeholder='••••••••',  required, minlength='8')
+      label.text-base--2.margin--side(for='password') New Password
+      input#password.input--text(type='password' placeholder='••••••••',  required, minlength='8')
+      label.text-base--2.margin--side(for='password-confirm') New Password Confirm
+      input#password-confirm.input--text(type='password' placeholder='••••••••',  required, minlength='8')
+      button.btn.btn--primary.btn--save-password(type='submit') Save Password
+
 script(src='https://unpkg.com/axios/dist/axios.min.js')
 script(src='/js/index.js' type="module")
