@@ -50,8 +50,13 @@ export const getMe = catchAsync(async (req, res, next) => {
 
 export const getUser = catchAsync(async (req, res , next) =>{
 
-    const user = await User.findOne({userName: req.params.username}).populate('links');
-
+    if(req.params.username.startsWith("@")){
+    console.log(req.params.username.startsWith("@"));
+    console.log(req.params.username);
+    const userName = req.params.username.text.slice(1 , -1);
+    
+    const user = await User.findOne({userName: userName}).populate('links');
+    console.log(user);
     if(!user) {
         return next(new AppError('No User found with that ID', 404));
     }
@@ -62,6 +67,9 @@ export const getUser = catchAsync(async (req, res , next) =>{
             user,
         },
     });
+  }{
+    next(new AppError('No error', 404));
+  }
 });
 
 
