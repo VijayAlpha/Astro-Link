@@ -43,12 +43,6 @@ html(lang='en')
       h1(class='text-box__name')= user.name  
       h1(class='text-box__user-name')= `@${user.userName}`
       p(class='text-box__user-bio')= user.userBio
-    if loggedIn
-      .button-container
-        button.btn.btn--secondary
-          a.link(href='/settings') Edit Profile
-        button.btn.btn--primary Share
-    .text--h2.border-bottom.margin-bottom.padding--up-side-down Soical
     .social-link
       if loggedIn
         a(href='/social-links' class='social-link__link')
@@ -66,10 +60,11 @@ html(lang='en')
         img(src='./img/YouTube.png' alt='' class='social-link__img')
       a(href='#' class='social-link__link' target='_blank')
         img(src='./img/TikTok.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/Facebook.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/Twitter.png' alt='' class='social-link__img')
+    if loggedIn
+      .button-container
+        button.btn.btn--secondary
+          a.link(href='/settings') Edit Profile
+        button.btn.btn--primary Share
     .text--h2.border-bottom.margin-bottom.padding--up-side-down Links
     .media-link
       if loggedIn
