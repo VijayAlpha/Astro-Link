@@ -2,10 +2,9 @@ Problem:
     - The Get user route is not send the error msg if there is no user FIX-IT!!!!!!!!!!!!!!!!!
 
 TODO: 
-    - Design avatar/banner/link-img File - Front-End
-    - Design more option ( logout , report ) button on top of userview - Front-End
+    - Add missing icons
+    - Design link-img File - Front-End
     - Design edit link tab in userview - Front-End 
-    - Add changePassword route - Back-End
-    - Add Delete/Edit Link route - Back-End
+    - Add Edit Link route - Back-End
     - Enanche securities
     - Better error handling
