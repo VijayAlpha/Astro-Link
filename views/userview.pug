@@ -18,6 +18,8 @@ html(lang='en')
       .more-option__list
         ul
           li.more-option__list--option
+            a(href='/settings') Settings
+          li.more-option__list--option
             a(href='/logout') Logout
           li.more-option__list--option
             a(href='/report') Report
@@ -45,7 +47,7 @@ html(lang='en')
       p(class='text-box__user-bio')= user.userBio
     .social-link
       if loggedIn
-        a(href='/social-links' class='social-link__link')
+        a(href='/settings/social' class='social-link__link')
           img(src='./img/plus.svg' alt='' class='social-link__img')
       
       a(href='#' class='social-link__link' target='_blank')

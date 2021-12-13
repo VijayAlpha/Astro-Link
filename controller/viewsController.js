@@ -38,6 +38,18 @@ export const getMe = catchAsync(async (req, res, next) => {
 
 export const getSettings = (req, res) => {
   const user = req.user;
+
+  if (req.params.pages == "account") {
+    return res.status(200).render("account-settings", { user });
+  }
+  if (req.params.pages == "social") {
+    return res.status(200).render("social-settings", { user });
+  }
+  if (req.params.pages == "privacy") {
+    return res.status(200).render("password-settings", { user });
+  }
+
+  //if no params just send the settings page
   res.status(200).render("settings", { user });
 };
 

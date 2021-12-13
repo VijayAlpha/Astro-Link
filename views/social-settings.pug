@@ -5,10 +5,10 @@ head
   link(rel='stylesheet' href='/css/main.css')
   title sign-up
 main
-  .box-container.margin--large
-    .text--h1 Settings
+  .flex-box.ma--top-side
+    img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
+    .text--h1.ma--side Social Links
   .box-container
-    .text--h2.margin--large Social Links
     input#email.input--text(type='email' name='email' placeholder='E-mail')
     input.input--text(type='number' placeholder='Phone number')
     input.input--text(type='text' placeholder='Instagram')
