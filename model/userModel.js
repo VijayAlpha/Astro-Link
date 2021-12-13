@@ -69,13 +69,17 @@ const userSchema =  new mongoose.Schema({
       },
       instagram: {
         type: String,
-        validate: [validator.isURL, 'Please provide a valid URL']
       },
-      facebook: {
+      twitter: {
         type: String,
-        validate: [validator.isURL, 'Please provide a valid URL']
       },
       clubhouse: {
+        type: String,
+      },
+      snapchat: {
+        type: String,
+      },
+      facebook: {
         type: String,
         validate: [validator.isURL, 'Please provide a valid URL']
       },
@@ -84,14 +88,6 @@ const userSchema =  new mongoose.Schema({
         validate: [validator.isURL, 'Please provide a valid URL']
       },
       pinterest: {
-        type: String,
-        validate: [validator.isURL, 'Please provide a valid URL']
-      },
-      snapchat: {
-        type: String,
-        validate: [validator.isURL, 'Please provide a valid URL']
-      },
-      twitter: {
         type: String,
         validate: [validator.isURL, 'Please provide a valid URL']
       },

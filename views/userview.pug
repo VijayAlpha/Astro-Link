@@ -12,19 +12,17 @@ html(lang='en')
   body
     //- App Option TAB
     .more-option
-      input#navi-toggle.more-option__checkbox(type='checkbox')
-      label.more-option__icon(for='navi-toggle')
-        img.more-option__icon--img(src='./img/more-option-icon--white.svg')
-      .more-option__list
-        ul
-          li.more-option__list--option
-            a(href='/settings') Settings
-          li.more-option__list--option
-            a(href='/logout') Logout
-          li.more-option__list--option
-            a(href='/report') Report
-          li.more-option__list--option
-            a(href='/signup') Sign-up
+      if loggedIn 
+        a(href='/settings').more-option__icon
+          img.more-option__icon--img(src='./img/setting-icon.png')
+      if !loggedIn
+        input#navi-toggle.more-option__checkbox(type='checkbox')
+        label.more-option__icon(for='navi-toggle')
+          img.more-option__icon--img(src='./img/more-option-icon--white.svg')
+        .more-option__list
+          ul
+            li.more-option__list--option
+              a(href='/signup') Sign-up
     //- Link Option TAB
     .link-option
       div
@@ -38,7 +36,8 @@ html(lang='en')
 
     .image-box
       div(class='image-box__cover-box')
-        img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
+        if user.banner
+          img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
       div(class='image-box__profile-box')
         img(src=`img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
     .text-box
@@ -49,19 +48,26 @@ html(lang='en')
       if loggedIn
         a(href='/settings/social' class='social-link__link')
           img(src='./img/plus.svg' alt='' class='social-link__img')
-      
+
+      if user.socialLinks.email
+        a(href=`mailto:${user.socialLinks.email}` class='social-link__link')
+          img(src='./img/email.png' alt='Email' class='social-link__img')
+      if user.socialLinks.phone
+        a(href=`tel: ${user.socialLinks.phone}` class='social-link__link')
+          img(src='./img/phone.png' alt='Phone' class='social-link__img')
+      if user.socialLinks.instagram
+        a(href=`https://www.instagram.com/${user.socialLinks.instagram}` class='social-link__link' target='_blank')
+          img(src='./img/instagram.png' alt='instagram' class='social-link__img')
+      if user.socialLinks.twitter
+        a(href=`https://twitter.com/${user.socialLinks.twitter}` class='social-link__link' target='_blank')
+          img(src='./img/twitter.png' alt='twitter' class='social-link__img')
+      if user.socialLinks.snapchat
+        a(href=`https://snapchat.com/add/${user.socialLinks.snapchat}` class='social-link__link' target='_blank')
+          img(src='./img/Snapchat - Alternate.png' alt='snapchat' class='social-link__img')
       a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/Facebook.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/Twitter.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/Snapchat - Alternate.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/TikTok.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/YouTube.png' alt='' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-        img(src='./img/TikTok.png' alt='' class='social-link__img')
+      if user.socialLinks.snapchat
+        a(href=`https://clubhouse.com/@${user.socialLinks.clubhouse}` class='social-link__link' target='_blank')
+          img(src='./img/clubhouse.png' alt='clubhouse' class='social-link__img')
     if loggedIn
       .button-container
         button.btn.btn--secondary
