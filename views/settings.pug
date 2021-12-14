@@ -1,28 +1,25 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet' href='/css/main.css')
-  title Settings
-main
-  .flex-box.ma--top-side
-    img.icon--large(src='./img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
-    .text--h1.ma--side Settings
-  .settings.list
-    ul
-      li.settings__item.list__item.border-bottom
-        a.settings__option.link(href='settings/account')
-          | Account Settings
-      li.settings__item.list__item.border-bottom
-        a.settings__option.link(href='settings/social')
-          | Add Social Media
-      li.settings__item.list__item.border-bottom
-        a.settings__option.link(href='settings/privacy')
-          | Password Settings
-      li.settings__item.list__item.border-bottom
-        a.settings__option.link(href='#') Contact Us
-      li.settings__item.list__item.border-bottom
-        a.settings__option.link(href='#') Report
-      li.settings__item.list__item.border-bottom
-        a.settings__option.link(href='/logout') Sign out
-include _footer.pug
+extends base.pug
+
+block content
+  main
+    .flex-box.ma--top-side
+      img.icon--large(src='./img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
+      .text--h1.ma--side Settings
+    .settings.list
+      ul
+        li.settings__item.list__item.border-bottom
+          a.settings__option.link(href='settings/account')
+            | Account Settings
+        li.settings__item.list__item.border-bottom
+          a.settings__option.link(href='settings/social')
+            | Add Social Media
+        li.settings__item.list__item.border-bottom
+          a.settings__option.link(href='settings/privacy')
+            | Password Settings
+        li.settings__item.list__item.border-bottom
+          a.settings__option.link(href='#') Contact Us
+        li.settings__item.list__item.border-bottom
+          a.settings__option.link(href='#') Report
+        li.settings__item.list__item.border-bottom
+          a.settings__option.link(href='/logout') Sign out
+  include _footer.pug

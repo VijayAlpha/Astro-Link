@@ -20,7 +20,7 @@ html {
 
 @media only screen and (max-width: 56.2em) {
   html {
-    font-size: 50%;
+    font-size: 45%;
   }
 }
 
@@ -220,6 +220,8 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 12px;
+  background-position: center;
+  background-size: cover;
 }
 
 .image-box__profile-box {
@@ -233,7 +235,7 @@ body {
   background: -webkit-gradient(linear, right top, left top, from(#f80759), to(#bc4e9c));
   background: linear-gradient(to left, #f80759, #bc4e9c);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  width: 13rem;
+  width: 15rem;
   -webkit-transform: translateY(-8rem);
           transform: translateY(-8rem);
   padding: 1rem;
@@ -363,14 +365,14 @@ body {
 }
 
 .more-option__icon {
-  padding: .6rem .8rem;
+  padding: .6rem;
   border-radius: 6px;
   background-color: rgba(0, 0, 0, 0.658);
   float: right;
 }
 
 .more-option__icon--img {
-  height: 2.4rem;
+  height: 3.4rem;
 }
 
 .more-option__list {
@@ -476,9 +478,11 @@ body {
 }
 
 .text-box__user-bio {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   padding: 1rem;
   line-height: 1.4;
+  font-weight: 600;
   font-family: 'Segoe UI', sans-serif;
   margin: 1rem;
+  color: #666;
 }

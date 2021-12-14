@@ -1,11 +1,6 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='/css/main.css')
-    title Adding Link
-  body
+extends base.pug
+
+block content
     main
       .flex-box.ma--top-side
         img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
@@ -16,5 +11,3 @@ html(lang='en')
         input#link-description.input--text(type='text' placeholder='Description')
         input#link-image.input--text(type='file' accept='image/*' placeholder='Link Image')
         button.btn.btn--primary(type='submit') Save
-    script(src='https://unpkg.com/axios/dist/axios.min.js')
-    script(src='/js/index.js' type="module")

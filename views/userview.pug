@@ -37,7 +37,7 @@ html(lang='en')
     .image-box
       div(class='image-box__cover-box')
         if user.banner
-          img(src=`img/users/${user.banner}` alt=' ' class='image-box__cover-img')
+          div(style=`background-image: url(./img/users/${user.banner});` class='image-box__cover-img')
       div(class='image-box__profile-box')
         img(src=`img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
     .text-box

@@ -1,11 +1,6 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='/css/main.css')
-    title Login
-  body
+extends base.pug
+
+block content
     main
       // LOGIN PAGE
       .box-container.ma--lg
@@ -25,5 +20,3 @@ html(lang='en')
           button.btn.btn--tertiary
             a.link(href='/signup') Sign up
     include _footer.pug
-    script(src='https://unpkg.com/axios/dist/axios.min.js')
-    script(src='/js/index.js' type="module")
