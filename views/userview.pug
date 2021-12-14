@@ -14,7 +14,7 @@ html(lang='en')
     .more-option
       if loggedIn 
         a(href='/settings').more-option__icon
-          img.more-option__icon--img(src='./img/setting-icon.png')
+          img.more-option__icon--img(src='./img/ic24-settings.svg')
       if !loggedIn
         input#navi-toggle.more-option__checkbox(type='checkbox')
         label.more-option__icon(for='navi-toggle')
@@ -51,27 +51,26 @@ html(lang='en')
 
       if user.socialLinks.email
         a(href=`mailto:${user.socialLinks.email}` class='social-link__link')
-          img(src='./img/email.png' alt='Email' class='social-link__img')
+          img(src='./img/email.svg' alt='Email' class='social-link__img')
       if user.socialLinks.phone
         a(href=`tel: ${user.socialLinks.phone}` class='social-link__link')
-          img(src='./img/phone.png' alt='Phone' class='social-link__img')
+          img(src='./img/phone.svg' alt='Phone' class='social-link__img')
       if user.socialLinks.instagram
         a(href=`https://www.instagram.com/${user.socialLinks.instagram}` class='social-link__link' target='_blank')
-          img(src='./img/instagram.png' alt='instagram' class='social-link__img')
+          img(src='./img/instagram.svg' alt='instagram' class='social-link__img')
       if user.socialLinks.twitter
         a(href=`https://twitter.com/${user.socialLinks.twitter}` class='social-link__link' target='_blank')
-          img(src='./img/twitter.png' alt='twitter' class='social-link__img')
+          img(src='./img/twitter.svg' alt='twitter' class='social-link__img')
       if user.socialLinks.snapchat
         a(href=`https://snapchat.com/add/${user.socialLinks.snapchat}` class='social-link__link' target='_blank')
-          img(src='./img/Snapchat - Alternate.png' alt='snapchat' class='social-link__img')
-      a(href='#' class='social-link__link' target='_blank')
-      if user.socialLinks.snapchat
+          img(src='./img/Snapchat.svg' alt='snapchat' class='social-link__img')
+      if user.socialLinks.clubhouse
         a(href=`https://clubhouse.com/@${user.socialLinks.clubhouse}` class='social-link__link' target='_blank')
           img(src='./img/clubhouse.png' alt='clubhouse' class='social-link__img')
     if loggedIn
       .button-container
         button.btn.btn--secondary
-          a.link(href='/settings') Edit Profile
+          a.link(href='/settings/account') Edit Profile
         button.btn.btn--primary Share
     .text--h2.border-bottom.margin-bottom.padding--up-side-down Links
     .media-link
@@ -100,10 +99,7 @@ html(lang='en')
               if link.linkDescription
                 p.media-link__description= link.linkDescription
             img.media-link__icon(src='./img/more-option-icon--black.svg')    
-    footer
-      .brand-tag
-        span(class='brand-tag__powered-by') Powered By
-        span(class='brand-tag__app-name') AstroLink
+    include _footer.pug
     script(src='https://unpkg.com/axios/dist/axios.min.js')
     script(src='/js/style.js' type="module")
     script(src='/js/index.js' type="module")

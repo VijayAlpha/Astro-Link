@@ -7,8 +7,9 @@ html(lang='en')
     title Adding Link
   body
     main
-      .box-container.margin--large
-        .text--h1 Add Link
+      .flex-box.ma--top-side
+        img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
+        .text--h1.ma--side Add Link
       form.form--add-link.box-container
         input#link.input--text(type='text' placeholder='Link')
         input#link-name.input--text(type='text' placeholder='Link Name')

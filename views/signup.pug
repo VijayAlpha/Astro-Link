@@ -8,7 +8,7 @@ html(lang='en')
   body
     main
       // SIGN UP
-      .box-container.margin--large
+      .box-container.ma--lg
          .text--h1.color-primary Sign Up
          span.text-base--1 Welcome to astroLink
       .box-container
@@ -19,10 +19,11 @@ html(lang='en')
           input#password.input--text(type='password' placeholder='Password')
           input#confirm-password.input--text(type='password' placeholder='Password Confirm')
           button.btn.btn--primary(type='submit') Sign up
-      .box-container.margin--large
+      .box-container.ma--lg
          span.text-base--1
           | If you alreday have a account Login
           button.btn.btn--tertiary
             a.link(href='/login') Log in
+    include _footer.pug
     script(src='https://unpkg.com/axios/dist/axios.min.js')
     script(src='/js/index.js' type="module")
