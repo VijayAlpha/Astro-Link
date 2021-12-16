@@ -4,10 +4,14 @@ block content
     main
       .flex-box.ma--top-side
         img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
-        .text--h1.ma--side Add Link
-      form.form--add-link.box-container
-        input#link.input--text(type='text' placeholder='Link')
-        input#link-name.input--text(type='text' placeholder='Link Name')
-        input#link-description.input--text(type='text' placeholder='Description')
+        .text--h1.ma--side= title
+      form.box-container(class=`${link ? 'form--edit-link' : 'form--add-link'}` id=`${link ? link.id : ""}`)
+        label.text-base--2.ma--side(for='link-name') Link
+        input#link.input--text(type='text' required placeholder='Link' value=`${link ? link.link : ""}`)
+        label.text-base--2.ma--side(for='link') Link Name
+        input#link-name.input--text(type='text' required  placeholder='Link Name' value=`${link ? link.linkName : ""}`)
+        label.text-base--2.ma--side(for='link-description') Link Description
+        input#link-description.input--text(type='text' placeholder='Description' value=`${link ? (link.linkDescription ? link.linkDescription : "") : ""}`)
+        label.text-base--2.ma--side(for='link-image') Link Image
         input#link-image.input--text(type='file' accept='image/*' placeholder='Link Image')
         button.btn.btn--primary(type='submit') Save

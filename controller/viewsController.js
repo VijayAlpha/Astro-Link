@@ -1,4 +1,5 @@
 import User from "../model/userModel.js";
+import Link from "../model/linkModel.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 
@@ -55,12 +56,20 @@ export const getSettings = (req, res) => {
 
 export const getAddLink = catchAsync(async (req, res, next) => {
   res.status(200).render("addLink", {
-    title: "add Link",
+    title: "Add Link",
   });
 });
 
-export const getSocialLinks = (req, res) => {
-  res.status(200).render("social-links", {
-    title: "create account",
+export  const getEditLink = catchAsync(async (req, res, next) => {
+
+  const link = await Link.findById(req.params.id);
+
+  if(!link){
+    return new AppError("No link found with that id", 404);
+  }
+
+  res.status(200).render("addLink", {
+    title: "Edit Link",
+    link
   });
-};
+});

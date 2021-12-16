@@ -1,10 +1,11 @@
 import { login, signup } from "./login.js";
-import { addLink, deleteLink } from "./link.js";
+import { addLink, deleteLink , updateLink } from "./link.js";
 import { userSettings } from "./settings.js";
 
 const loginForm = document.querySelector(".form--login");
 const signupForm = document.querySelector(".form--signup");
 const addLinkForm = document.querySelector(".form--add-link");
+const editLinkForm = document.querySelector(".form--edit-link");
 const userSettingsForm = document.querySelector(".form--user-settings");
 const userSocialSettingForm = document.querySelector(
   ".form--user-socialSettings"
@@ -119,6 +120,25 @@ if (addLinkForm) {
     // const linkDescription = document.getElementById('link-description').value;
     // const photo = document.getElementById('link-image').value;
     addLink(form);
+  });
+}
+
+if (editLinkForm) {
+  editLinkForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const link = document.getElementById("link").value;
+    const linkName = document.getElementById("link-name").value;
+    const linkDescription = document.getElementById("link-description").value;
+    const photo = document.getElementById("link-image").files[0];
+
+    const form = new FormData();
+    if (link) form.append("link", link);
+    if (linkName) form.append("linkName", linkName);
+    if (linkDescription) form.append("linkDescription", linkDescription);
+    if (photo) form.append("photo", photo);
+
+    updateLink(editLinkForm.id , form);
   });
 }
 

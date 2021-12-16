@@ -5,8 +5,8 @@ import {
   getLoginForm,
   getSignupForm,
   getMe,
-  getAddLink,
-  getSocialLinks,
+  getAddLink,   
+  getEditLink,                                                     
   getSettings,
 } from "../controller/viewsController.js";
 
@@ -20,6 +20,7 @@ router.get("/me", protect, getMe);
 router.get("/settings", protect, getSettings);
 router.get("/settings/:pages", protect, getSettings);
 router.get("/add-link" , protect, getAddLink);
+router.get("/link/:id" , protect, getEditLink);
 // router.get("/:username", getUser);
 
 export default router;

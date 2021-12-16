@@ -16,6 +16,24 @@ export const addLink = async (data) => {
     }
   };
 
+  export const updateLink = async ( id , data ) => {
+    try {
+      const res = await axios({
+        method: 'PATCH',
+        url: `/api/v1/link/${id}`,
+        data
+      });
+  
+      if (res.data.status === 'success') {
+        window.setTimeout(() => {
+          location.assign('/me');
+        }, 1000);
+      }
+    } catch (err) {
+      console.log(err.response)
+    }
+  };
+
   export const deleteLink = async (linkId) => {
     try {
       const res = await axios({
