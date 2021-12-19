@@ -13,5 +13,12 @@ block content
         label.text-base--2.ma--side(for='link-description') Link Description
         input#link-description.input--text(type='text' placeholder='Description' value=`${link ? (link.linkDescription ? link.linkDescription : "") : ""}`)
         label.text-base--2.ma--side(for='link-image') Link Image
-        input#link-image.input--text(type='file' accept='image/*' placeholder='Link Image')
+        label.input--text.flex-box(for="link-image")
+          img(id="input--image-preview" class="input--image" src=`${link ? (link.photo ? `../img/link-image/${link.photo}` : "../img/link-image/add-image.svg") : "../img/link-image/add-image.svg"}`)
+          div(class="btn btn--secondary text-base--2 text-center") Add
+          button(class="btn btn--secondary text-base--2"  id="link-image--delete") Delete
+        input(id="link-image" style="display: none" class="input--text" accept="image/*" type="file" placeholder="Link Image")
+        //-input#link-image.input--text(type='file' accept='image/*' placeholder='Link Image')
         button.btn.btn--primary(type='submit') Save
+    script(src="/js/file-preview.js" type="module")
+        

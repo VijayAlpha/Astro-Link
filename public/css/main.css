@@ -131,6 +131,10 @@ body {
   display: flex;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .link {
   text-decoration: none;
   cursor: pointer;
@@ -189,7 +193,7 @@ body {
 
 .btn--primary {
   background-color: #4E76CD;
-  color: #fff;
+  color: #FFF;
 }
 
 .btn--secondary {
@@ -278,7 +282,7 @@ body {
 }
 
 .link-option__option > a {
-  color: #fff;
+  color: #FFF;
   text-decoration: none;
 }
 
@@ -287,6 +291,13 @@ body {
   margin: 1rem;
   border-radius: 1.5rem;
   border: 1px solid #eee;
+}
+
+.input--image {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 1.5rem;
+  margin: 1rem;
 }
 
 .media-link {
