@@ -142,6 +142,28 @@ body {
   display: inline-block;
 }
 
+.alert {
+  position: fixed;
+  z-index: 1000;
+  width: calc(100% - 8rem);
+  padding: 1.6rem;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #FFF;
+  border-radius: 10px;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.alert--success {
+  background-color: #4E76CD;
+}
+
+.alert--error {
+  background-color: #ff0037;
+}
+
 .brand-tag {
   width: 100%;
   text-align: center;

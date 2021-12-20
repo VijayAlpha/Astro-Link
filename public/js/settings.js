@@ -1,3 +1,5 @@
+import { showAlert } from './alerts.js';
+
 export const userSettings = async (data, type) => {
   try {
     const url =
@@ -19,11 +21,13 @@ export const userSettings = async (data, type) => {
 
     //afterward change to show alert as data saved
     if (res.data.status === "success") {
+      showAlert('success', "Profile Updated Successfully!");
       window.setTimeout(() => {
         location.assign("/me");
       }, 500);
     }
   } catch (err) {
+    showAlert('error', err.response.data.message);
     console.log(err.response);
   }
 };
