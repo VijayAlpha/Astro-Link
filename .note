@@ -6,7 +6,6 @@ FIX:
         (bcoz while giving the none sq image it takes it own shape)
 
 TODO: 
-    - Better error handling - frontend
     - Build Share button
     - Build Forgotpassword controller - backend
     - Build Home page (/index.html)
