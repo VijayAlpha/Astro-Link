@@ -1,11 +1,13 @@
 Problem:
     - The Get user route is not send the error msg if there is no user FIX-IT!!!!!!!!!!!!!!!!!
 
+FIX: 
+    - style account profile image to fixed width and height
+        (bcoz while giving the none sq image it takes it own shape)
+
 TODO: 
-    - Design avatar/banner/link-img File - Front-End
-    - Design more option ( logout , report ) button on top of userview - Front-End
-    - Design edit link tab in userview - Front-End 
-    - Add changePassword route - Back-End
-    - Add Delete/Edit Link route - Back-End
-    - Enanche securities
-    - Better error handling
+    - Better error handling - frontend
+    - Build Share button
+    - Build Forgotpassword controller - backend
+    - Build Home page (/index.html)
+    

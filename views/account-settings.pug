@@ -10,12 +10,12 @@ block content
           //- banner image 
           label.text-base--2.ma--side(for='banner-image' class='image-box__cover-box')
             if(user.banner)
-              img(src=`../img/users/${user.banner}` alt=' ' class='image-box__cover-img')
+              img(src=`../img/users/${user.banner}` id="banner-img" alt=' ' class='image-box__cover-img')
           input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
           //- profile image
           label.text-base--2.ma--side(for='profile-image' class='image-box__profile-box') 
             if(user.avatar)
-              img(src=`../img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
+              img(src=`../img/users/${user.avatar}` id="profile-img" alt=' ' class='image-box__profile-img')
           input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
           label.text-base--2.ma--side(for='name') Name
           input#name.input--text(type='text' value=`${user.name}` placeholder='Name')
@@ -27,3 +27,4 @@ block content
           label.text-base--2.ma--side(for='email') Email
           input#email.input--text(type='email' name='email' value=`${user.email}` placeholder='E-mail')
           button.btn.btn--primary.btn--save-data(type='submit') Save
+  script(src="/js/file-preview.js" type="module")
