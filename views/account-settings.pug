@@ -9,10 +9,12 @@ block content
       .box-container
           //- banner image 
           label.text-base--2.ma--side(for='banner-image' class='image-box__cover-box')
+            if(user.banner)
               img(src=`../img/users/${user.banner}` alt=' ' class='image-box__cover-img')
           input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
           //- profile image
           label.text-base--2.ma--side(for='profile-image' class='image-box__profile-box') 
+            if(user.avatar)
               img(src=`../img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
           input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
           label.text-base--2.ma--side(for='name') Name
