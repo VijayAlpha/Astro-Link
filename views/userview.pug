@@ -71,7 +71,7 @@ html(lang='en')
       .button-container
         button.btn.btn--secondary
           a.link(href='/settings/account') Edit Profile
-        button.btn.btn--primary Share
+        button.btn.btn--primary#profile-share-button Share
     .text--h2.border-bottom.margin-bottom.padding--up-side-down Links
     .media-link
       if loggedIn
@@ -101,5 +101,6 @@ html(lang='en')
             img.media-link__icon(src='./img/more-option-icon--black.svg')    
     include _footer.pug
     script(src='https://unpkg.com/axios/dist/axios.min.js')
+    script(src="./js/share.js" type="module")
     script(src='/js/style.js' type="module")
     script(src='/js/index.js' type="module")
