@@ -3,6 +3,10 @@ import Link from "../model/linkModel.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 
+export const home =  catchAsync(async (req, res, next) => {
+  res.status(200).render("home");
+});
+
 export const getUser = catchAsync(async (req, res, next) => {
   if (req.params.username.startsWith("@")) {
     const userName = req.params.username.split("@")[1];

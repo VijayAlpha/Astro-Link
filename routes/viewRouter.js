@@ -1,6 +1,7 @@
 import express from "express";
 import { protect, logout } from "../controller/authController.js";
 import {
+  home,
   getUser,
   getLoginForm,
   getSignupForm,
@@ -12,6 +13,7 @@ import {
 
 const router = express.Router();
 
+router.get("/" , home);
 router.get("/:username", getUser);
 router.get("/signup", getSignupForm);
 router.get("/login", getLoginForm);

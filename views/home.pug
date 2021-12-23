@@ -1,0 +1,27 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='preconnect' href='https://fonts.googleapis.com')
+  link(rel='preconnect' href='https://fonts.gstatic.com' crossorigin='')
+  link(href='https://fonts.googleapis.com/css2?family=Poppins&family=Signika:wght@400;500;600&display=swap' rel='stylesheet')
+  link(href='http://fonts.cdnfonts.com/css/segoe-ui-4?styles=18006,18005,18004,18003' rel='stylesheet')
+  link(rel='stylesheet' href='css/main.css')
+  title AstroLink | A Single Page For All Your Links
+main.hero
+  .hero__right
+    div
+      h1.hero__heading.ma--bottom
+        | A Single Page For All Your Links.
+      span.hero__sub-heading.ma--top-side
+        | Simple and free online homepage for your links, content and
+        | community.
+    ul.nav-bar__list.nav-bar__btn-box
+      li.nav-bar__item.text-base--2
+        a.link.hero__btn.nav-bar__btn(href='/signup')
+          | Create For Free
+      li.nav-bar__item.text-base--2.text--h2
+        a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/login') Login
+  .hero__left
+    img.hero__img(src='./img/HERO_IMAGE.png' alt='' srcset='')
