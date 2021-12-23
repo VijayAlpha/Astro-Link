@@ -3,13 +3,15 @@ extends base.pug
 block content
     main
       // LOGIN PAGE
-      .box-container.ma--lg
+      .box-container.ma--lg.text-center
         .text--h1.color-primary Login
         span.text-base--1
-          | if you are already a user,easily log in
+          | if you are already a user, easily log in
       .box-container
         form.form--login.box-container
+          label.ma--side.text-base--1(for='email') Email address
           input#email.input--text(type='email' placeholder='Email' required='')
+          label.ma--side.text-base--1(for='password') Password
           input#password.input--text(type='password' placeholder='Password' required='' minlength='8')
           button.btn.btn--primary(type='submit') Login
       .box-container.ma--lg

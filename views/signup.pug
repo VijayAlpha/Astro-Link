@@ -3,15 +3,20 @@ extends base.pug
 block content
    main
       // SIGN UP
-      .box-container.ma--lg
+      .box-container.ma--lg.text-center
          .text--h1.color-primary Sign Up
          span.text-base--1 Welcome to astroLink
       .box-container
          form.form--signup.box-container
+          label.ma--side.text-base--1(for='user-name') Username
           input#user-name.input--text(type='text' placeholder='User name')
+          label.ma--side.text-base--1(for='name') Your Name
           input#name.input--text(type='text' placeholder='Name')
+          label.ma--side.text-base--1(for='email') Email address
           input#email.input--text(type='email' placeholder='Email')
+          label.ma--side.text-base--1(for='password') Password
           input#password.input--text(type='password' placeholder='Password')
+          label.ma--side.text-base--1(for='confirm-password') Password confirm
           input#confirm-password.input--text(type='password' placeholder='Password Confirm')
           button.btn.btn--primary(type='submit') Sign up
       .box-container.ma--lg
