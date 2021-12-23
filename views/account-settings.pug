@@ -1,33 +1,30 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet' href='/css/main.css')
-  title AstroLink | Settings
-main
-  .flex-box.ma--top-side
-    img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
-    .text--h1.ma--side Account
-  form.form--user-settings  
-    .box-container
-        //- banner image 
-        label.text-base--2.margin--side(for='banner-image' class='image-box__cover-box')
-            img(src=`../img/users/${user.banner}` alt=' ' class='image-box__cover-img')
-        input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
-        //- profile image
-        label.text-base--2.margin--side(for='profile-image' class='image-box__profile-box') 
-            img(src=`../img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
-        input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
-        label.text-base--2.ma--side(for='name') Name
-        input#name.input--text(type='text' value=`${user.name}` placeholder='Name')
-        label.text-base--2.ma--side(for='user-name') Username
-        input#user-name.input--text(type='text' value=`${user.userName}` placeholder='Username')
-        label.text-base--2.ma--side(for='user-bio') Bio
-        textarea#user-bio.input--text(name='user-bio' cols='30' rows='10' placeholder='Bio')
-            = user.userBio
-        label.text-base--2.ma--side(for='email') Email
-        input#email.input--text(type='email' name='email' value=`${user.email}` placeholder='E-mail')
-        button.btn.btn--primary.btn--save-data(type='submit') Save
+extends base.pug
 
-script(src='https://unpkg.com/axios/dist/axios.min.js')
-script(src='/js/index.js' type="module")
+block content
+  main
+    .flex-box.ma--top-side
+      img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
+      .text--h1.ma--side Account
+    form.form--user-settings  
+      .box-container
+          //- banner image 
+          label.text-base--2.ma--side(for='banner-image' class='image-box__cover-box')
+            if(user.banner)
+              img(src=`../img/users/${user.banner}` id="banner-img" alt=' ' class='image-box__cover-img')
+          input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
+          //- profile image
+          label.text-base--2.ma--side(for='profile-image' class='image-box__profile-box') 
+            if(user.avatar)
+              img(src=`../img/users/${user.avatar}` id="profile-img" alt=' ' class='image-box__profile-img')
+          input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
+          label.text-base--2.ma--side(for='name') Name
+          input#name.input--text(type='text' value=`${user.name}` placeholder='Name')
+          label.text-base--2.ma--side(for='user-name') Username
+          input#user-name.input--text(type='text' value=`${user.userName}` placeholder='Username')
+          label.text-base--2.ma--side(for='user-bio') Bio
+          textarea#user-bio.input--text(name='user-bio' cols='30' rows='10' placeholder='Bio')
+              = user.userBio
+          label.text-base--2.ma--side(for='email') Email
+          input#email.input--text(type='email' name='email' value=`${user.email}` placeholder='E-mail')
+          button.btn.btn--primary.btn--save-data(type='submit') Save
+  script(src="/js/file-preview.js" type="module")

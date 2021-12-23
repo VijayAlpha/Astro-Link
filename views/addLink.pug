@@ -1,19 +1,24 @@
-doctype html
-html(lang='en')
-  head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet' href='/css/main.css')
-    title Adding Link
-  body
+extends base.pug
+
+block content
     main
-      .box-container.margin--large
-        .text--h1 Add Link
-      form.form--add-link.box-container
-        input#link.input--text(type='text' placeholder='Link')
-        input#link-name.input--text(type='text' placeholder='Link Name')
-        input#link-description.input--text(type='text' placeholder='Description')
-        input#link-image.input--text(type='file' accept='image/*' placeholder='Link Image')
+      .flex-box.ma--top-side
+        img.icon--large(src='../img/left-arrow.svg' alt='Back Arrow' onclick='history.back()')
+        .text--h1.ma--side= title
+      form.box-container(class=`${link ? 'form--edit-link' : 'form--add-link'}` id=`${link ? link.id : ""}`)
+        label.text-base--2.ma--side(for='link-name') Link
+        input#link.input--text(type='text' required placeholder='Link' value=`${link ? link.link : ""}`)
+        label.text-base--2.ma--side(for='link') Link Name
+        input#link-name.input--text(type='text' required  placeholder='Link Name' value=`${link ? link.linkName : ""}`)
+        label.text-base--2.ma--side(for='link-description') Link Description
+        input#link-description.input--text(type='text' placeholder='Description' value=`${link ? (link.linkDescription ? link.linkDescription : "") : ""}`)
+        label.text-base--2.ma--side(for='link-image') Link Image
+        label.input--text.flex-box(for="link-image")
+          img(id="input--image-preview" class="input--image" src=`${link ? (link.photo ? `../img/link-image/${link.photo}` : "../img/link-image/add-image.svg") : "../img/link-image/add-image.svg"}`)
+          div(class="btn btn--secondary text-base--2 text-center") Add
+          button(class="btn btn--secondary text-base--2"  id="link-image--delete") Delete
+        input(id="link-image" style="display: none" class="input--text" accept="image/*" type="file" placeholder="Link Image")
+        //-input#link-image.input--text(type='file' accept='image/*' placeholder='Link Image')
         button.btn.btn--primary(type='submit') Save
-    script(src='https://unpkg.com/axios/dist/axios.min.js')
-    script(src='/js/index.js' type="module")
+    script(src="/js/file-preview.js" type="module")
+        

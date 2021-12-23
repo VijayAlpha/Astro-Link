@@ -1,4 +1,5 @@
 import User from "../model/userModel.js";
+import Link from "../model/linkModel.js";
 import catchAsync from "../utils/catchAsync.js";
 import AppError from "../utils/appError.js";
 
@@ -26,7 +27,7 @@ export const getLoginForm = (req, res) => {
 
 export const getSignupForm = (req, res) => {
   res.status(200).render("signup", {
-    title: "create account",
+    title: "Create Account",
   });
 };
 
@@ -40,27 +41,35 @@ export const getSettings = (req, res) => {
   const user = req.user;
 
   if (req.params.pages == "account") {
-    return res.status(200).render("account-settings", { user });
+    return res.status(200).render("account-settings", { title: "Account settings", user });
   }
   if (req.params.pages == "social") {
-    return res.status(200).render("social-settings", { user });
+    return res.status(200).render("social-settings", { title: "Social Settings", user });
   }
   if (req.params.pages == "privacy") {
-    return res.status(200).render("password-settings", { user });
+    return res.status(200).render("password-settings", { title: "Password Settings", user });
   }
 
   //if no params just send the settings page
-  res.status(200).render("settings", { user });
+  res.status(200).render("settings", { title: "Settings", user });
 };
 
 export const getAddLink = catchAsync(async (req, res, next) => {
   res.status(200).render("addLink", {
-    title: "add Link",
+    title: "Add Link",
   });
 });
 
-export const getSocialLinks = (req, res) => {
-  res.status(200).render("social-links", {
-    title: "create account",
+export  const getEditLink = catchAsync(async (req, res, next) => {
+
+  const link = await Link.findById(req.params.id);
+
+  if(!link){
+    return new AppError("No link found with that id", 404);
+  }
+
+  res.status(200).render("addLink", {
+    title: "Edit Link",
+    link
   });
-};
+});
