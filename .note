@@ -6,16 +6,6 @@ FIX:
         (bcoz while giving the none sq image it takes it own shape)
 
 TODO: 
-<<<<<<< HEAD
-    - Add missing icons
-    - Design link-img File - Front-End
-    - Design edit link tab in userview - Front-End 
-    - Add Edit Link route - Back-End
-    - Enanche securities
-    - Better error handling
-=======
-    - Build Share button
     - Build Forgotpassword controller - backend
     - Build Home page (/index.html)
     
->>>>>>> 9f2ebe7226b12b27194acd285c007f0caab26f4a
