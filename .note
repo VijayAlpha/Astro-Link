@@ -1,10 +1,9 @@
 Problem:
-    - The Get user route is not send the error msg if there is no user FIX-IT!!!!!!!!!!!!!!!!!
-
+    - mailgun is not sending emails to real emails in production (for that you have to have your own domain)
 FIX: 
     - style account profile image to fixed width and height
         (bcoz while giving the none sq image it takes it own shape)
 
 TODO: 
-    - Build Forgotpassword controller - backend
+    - Better error handing in sign-up error
     
