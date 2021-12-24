@@ -38,12 +38,14 @@ export const signup = async ( name , userName , email, password , passwordConfir
     });
 
     if (res.data.status === 'success') {
+      showAlert('success', 'Account created successfully!');
       window.setTimeout(() => {
         location.assign('/me');
       }, 1000);
     }
   } catch (err) {
     console.log(err.response)
+    showAlert('error', err.response.data.message);
   }
 };
 
