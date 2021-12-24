@@ -1,3 +1,4 @@
+import crypto from "crypto";
 import mongoose from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
@@ -109,6 +110,8 @@ const userSchema = new mongoose.Schema(
         ],
       },
     },
+    passwordResetToken: String,
+    passwordResetExpires: Date,
   },
   {
     toJSON: { virtuals: true },
@@ -124,21 +127,35 @@ userSchema.virtual('links', {
 
 // this to save the user password in encrypted formate.(not to expoler by others)
 userSchema.pre('save', async function (next) {
-  // if password is not modified
+  // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();
-
+  // Hash the password with cost of 12
   this.password = await bcrypt.hash(this.password, 12);
-
+   // Delete passwordConfirm field
   this.passwordConfirm = undefined;
   next();
 });
 
+//METHODS
 // this to check the password in the DB and the password entered by user is same or not
 userSchema.methods.correctPassword = async function (
   candidatePassword,
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+userSchema.methods.createPasswordResetToken = function() {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000; //10mins * 60sec * 1000ms = 10mins
+
+  return resetToken;
 };
 
 const User = mongoose.model('User', userSchema);
