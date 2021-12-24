@@ -110,6 +110,7 @@ const userSchema = new mongoose.Schema(
         ],
       },
     },
+    passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
   },
@@ -136,6 +137,14 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+userSchema.pre('save', function(next) {
+  if (!this.isModified('password') || this.isNew) return next();
+
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+
 //METHODS
 // this to check the password in the DB and the password entered by user is same or not
 userSchema.methods.correctPassword = async function (
@@ -143,6 +152,20 @@ userSchema.methods.correctPassword = async function (
   userPassword
 ) {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 1000,
+      10
+    );
+
+    return JWTTimestamp < changedTimestamp;
+  }
+
+  // False means NOT changed
+  return false;
 };
 
 userSchema.methods.createPasswordResetToken = function() {
