@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import User from "./../model/userModel.js";
 import catchAsync from "./../utils/catchAsync.js";
 import AppError from "./../utils/appError.js";
-import sendEmail from "./../utils/email.js";
+import Email from "./../utils/email.js";
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -44,6 +44,10 @@ export const signup = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
+
+  const url = `${req.protocol}://${req.get('host')}/settings/account`;
+
+  await new Email(newUser, url).sendWelcome();
 
   createSendToken(newUser, 201, res);
 });
@@ -111,7 +115,7 @@ export const protect = catchAsync(async (req, res, next) => {
 
   if (currentUser.changedPasswordAfter(decode.iat)) {
     return next(
-      new AppError('User recently changed password! Please log in again.', 401)
+      new AppError("User recently changed password! Please log in again.", 401)
     );
   }
 
@@ -154,18 +158,12 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   await user.save({ validateBeforeSave: false });
 
   // 3) Send it to user's email to secure the rest process
-  const resetURL = `${req.protocol}://${req.get(
-    "host"
-  )}/api/v1/user/resetPassword/${resetToken}`;
-
-  const message = `Forgot your password? click the link below and update your password: ${resetURL}. \n If you didn't forget your password, please ignore this email!`;
-
   try {
-    await sendEmail({
-      email: user.email,
-      subject: "Your password reset token (valid for 10 min)",
-      message,
-    });
+    const resetURL = `${req.protocol}://${req.get(
+      "host"
+    )}/api/v1/user/resetPassword/${resetToken}`;
+
+    await new Email(user, resetURL).sendPasswordReset();
 
     res.status(200).json({
       status: "success",
@@ -174,8 +172,9 @@ export const forgotPassword = catchAsync(async (req, res, next) => {
   } catch (err) {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
+    console.log(err);
     await user.save({ validateBeforeSave: false });
-    
+
     return next(
       new AppError("There was an error sending the email. Try again later!"),
       500
