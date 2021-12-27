@@ -1,9 +1,9 @@
-import sharp from "sharp";
-import User from "../model/userModel.js";
-import catchAsync from "../utils/catchAsync.js";
-import AppError from "../utils/appError.js";
+const sharp = require('sharp');
+const User = require('../model/userModel.js');
+const catchAsync = require('../utils/catchAsync.js');
+const AppError = require('../utils/appError.js');
 
-export const resizeUserPhoto = catchAsync(async (req, res, next) => {
+exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
   if (!req.files) return next();
 
   if (req.files.avatar) {
@@ -11,7 +11,7 @@ export const resizeUserPhoto = catchAsync(async (req, res, next) => {
 
     await sharp(req.files.avatar[0].buffer)
       .resize(500, 500)
-      .toFormat("jpeg")
+      .toFormat('jpeg')
       .jpeg({ quality: 90 })
       .toFile(`public/img/users/${req.files.avatar[0].filename}`);
   }
@@ -20,7 +20,7 @@ export const resizeUserPhoto = catchAsync(async (req, res, next) => {
     req.files.banner[0].filename = `user-banner-${req.user.id}.jpeg`;
 
     await sharp(req.files.banner[0].buffer)
-      .toFormat("jpeg")
+      .toFormat('jpeg')
       .jpeg({ quality: 90 })
       .toFile(`public/img/users/${req.files.banner[0].filename}`);
   }
@@ -31,31 +31,31 @@ export const resizeUserPhoto = catchAsync(async (req, res, next) => {
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
 
-  Object.keys(obj).forEach((el) => {
+  Object.keys(obj).forEach(el => {
     if (allowedFields.includes(el)) newObj[el] = obj[el];
   });
 
   return newObj;
 };
 
-export const getMe = catchAsync(async (req, res, next) => {
+exports.getMe = catchAsync(async (req, res, next) => {
   res.status(200).json({
     user: req.user,
   });
 });
 
-export const getUser = catchAsync(async (req, res, next) => {
-  if (req.params.username.startsWith("@")) {
-    const userName = req.params.username.split("@")[1];
+exports.getUser = catchAsync(async (req, res, next) => {
+  if (req.params.username.startsWith('@')) {
+    const userName = req.params.username.split('@')[1];
 
-    const user = await User.findOne({ userName: userName }).populate("links");
+    const user = await User.findOne({ userName: userName }).populate('links');
 
     if (!user) {
-      return next(new AppError("No User found with that UserName", 404));
+      return next(new AppError('No User found with that UserName', 404));
     }
 
     res.status(200).json({
-      status: "success",
+      status: 'success',
       data: {
         user,
       },
@@ -65,24 +65,24 @@ export const getUser = catchAsync(async (req, res, next) => {
   }
 });
 
-export const updateMe = catchAsync(async (req, res, next) => {
+exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm) {
     return next(
       new AppError(
-        "This route is not for password update , Please use /updateMyPassword route"
+        'This route is not for password update , Please use /updateMyPassword route'
       )
     );
   }
 
   const filteredBody = filterObj(
     req.body,
-    "name",
-    "userName",
-    "userBio",
-    "avatar",
-    "banner",
-    "email",
-    "socialLinks"
+    'name',
+    'userName',
+    'userBio',
+    'avatar',
+    'banner',
+    'email',
+    'socialLinks'
   );
 
   if (req.files) {
@@ -96,7 +96,7 @@ export const updateMe = catchAsync(async (req, res, next) => {
   });
 
   res.status(200).json({
-    status: "success",
+    status: 'success',
     user: updatedUser,
   });
 });

@@ -145,6 +145,7 @@ if (editLinkForm) {
 if (loginForm)
   loginForm.addEventListener('submit', e => {
     e.preventDefault();
+    document.querySelector('.btn--login').textContent = 'Logging...';
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     login(email, password);
@@ -153,6 +154,8 @@ if (loginForm)
 if (signupForm)
   signupForm.addEventListener('submit', e => {
     e.preventDefault();
+    document.querySelector('.btn--sign-up').textContent = 'Logging...';
+
     const name = document.getElementById('name').value;
     const userName = document.getElementById('user-name').value;
     const email = document.getElementById('email').value;

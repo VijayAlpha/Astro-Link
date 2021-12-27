@@ -3,27 +3,27 @@ import { showAlert } from './alerts.js';
 export const userSettings = async (data, type) => {
   try {
     const url =
-      type === "password"
-        ? "/api/v1/user/updateMyPassword"
-        : "/api/v1/user/updateMe";
+      type === 'password'
+        ? '/api/v1/user/updateMyPassword'
+        : '/api/v1/user/updateMe';
 
-    if(type === "social"){
+    if (type === 'social') {
       data = {
-        socialLinks: data
-      }
+        socialLinks: data,
+      };
     }
 
     const res = await axios({
-      method: "PATCH",
+      method: 'PATCH',
       url,
       data,
     });
 
     //afterward change to show alert as data saved
-    if (res.data.status === "success") {
-      showAlert('success', "Profile Updated Successfully!");
+    if (res.data.status === 'success') {
+      showAlert('success', 'Profile Updated Successfully!');
       window.setTimeout(() => {
-        location.assign("/me");
+        location.assign('/me');
       }, 500);
     }
   } catch (err) {

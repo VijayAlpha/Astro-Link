@@ -1,9 +1,9 @@
-import sharp from 'sharp';
-import Link from '../model/linkModel.js';
-import catchAsync from '../utils/catchAsync.js';
-import AppError from '../utils/appError.js';
+const sharp = require('sharp');
+const Link = require('../model/linkModel.js');
+const catchAsync = require('../utils/catchAsync.js');
+const AppError = require('../utils/appError.js');
 
-export const resizeLinkPhoto = catchAsync(async (req, res, next) => {
+exports.resizeLinkPhoto = catchAsync(async (req, res, next) => {
   if (!req.file) return next();
   req.file.filename = `link-${req.user.id}-${Date.now()}.jpeg`;
 
@@ -16,7 +16,7 @@ export const resizeLinkPhoto = catchAsync(async (req, res, next) => {
   next();
 });
 
-export const createLink = catchAsync(async (req, res, next) => {
+exports.createLink = catchAsync(async (req, res, next) => {
   if (!req.body.user) req.body.user = req.user.id;
 
   if (req.file) req.body.photo = req.file.filename;
@@ -29,8 +29,7 @@ export const createLink = catchAsync(async (req, res, next) => {
   });
 });
 
-export const editLink = catchAsync(async (req, res, next) => {
-
+exports.editLink = catchAsync(async (req, res, next) => {
   if (req.file) req.body.photo = req.file.filename;
 
   const link = await Link.findById(req.params.id);
@@ -39,8 +38,10 @@ export const editLink = catchAsync(async (req, res, next) => {
     return next(new AppError('No document found with that ID', 404));
   }
 
-  if(link.user != req.user.id){
-    return next(new AppError("You don't have permission to update this link", 401));
+  if (link.user != req.user.id) {
+    return next(
+      new AppError("You don't have permission to update this link", 401)
+    );
   }
 
   const updatedLink = await Link.findByIdAndUpdate(req.params.id, req.body, {
@@ -54,7 +55,7 @@ export const editLink = catchAsync(async (req, res, next) => {
   });
 });
 
-export const deleteLink = catchAsync(async (req, res, next) => {
+exports.deleteLink = catchAsync(async (req, res, next) => {
   const link = await Link.findByIdAndDelete(req.body.linkId);
 
   if (!link) {
@@ -66,7 +67,7 @@ export const deleteLink = catchAsync(async (req, res, next) => {
   });
 });
 
-export const getLink = catchAsync(async (req, res, next) => {
+exports.getLink = catchAsync(async (req, res, next) => {
   const link = await Link.find().populate('user');
 
   res.status(201).json({

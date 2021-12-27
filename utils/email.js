@@ -1,23 +1,23 @@
-import nodemailer from "nodemailer";
-import pug from "pug";
-import htmlToText from "html-to-text";
+const nodemailer = require('nodemailer');
+const pug = require('pug');
+const htmlToText = require('html-to-text');
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+// const  { fileURLToPath } = require( 'url');
+// const  { dirname } = require( 'path');
 
-const __filename = fileURLToPath(import.meta.url);
-const dname = dirname(__filename);
+// const __filename = fileURLToPath(const .meta.url);
+// const dname = dirname(__filename);
 
 class Email {
   constructor(user, url) {
     this.to = user.email;
-    this.firstName = user.name.split(" ")[0];
+    this.firstName = user.name.split(' ')[0];
     this.url = url;
     this.from = `AstroLink <${process.env.EMAIL_FROM}>`;
   }
 
   newTransport() {
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === 'production') {
       // MailGun
       return nodemailer.createTransport({
         host: process.env.MAILGUN_HOST,
@@ -42,7 +42,7 @@ class Email {
   // Send the actual email
   async send(template, subject) {
     // 1) Render HTML based on a pug template
-    const html = pug.renderFile(`${dname}/../views/email/${template}.pug`, {
+    const html = pug.renderFile(`${__dirname}/../views/email/${template}.pug`, {
       firstName: this.firstName,
       url: this.url,
       subject,
@@ -62,15 +62,15 @@ class Email {
   }
 
   async sendWelcome() {
-    await this.send("welcome", "Welcome to the AstroLink!");
+    await this.send('welcome', 'Welcome to the AstroLink!');
   }
 
   async sendPasswordReset() {
     await this.send(
-      "passwordReset",
-      "Your password reset token (valid for only 10 minutes)"
+      'passwordReset',
+      'Your password reset token (valid for only 10 minutes)'
     );
   }
 }
 
-export default Email;
+module.exports = Email;

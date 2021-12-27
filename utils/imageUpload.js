@@ -1,4 +1,4 @@
-import multer from 'multer';
+const multer = require('multer');
 
 // This below code for image upload
 const multerStorage = multer.memoryStorage();
@@ -13,8 +13,12 @@ const multerFilter = (req, file, cb) => {
 
 const upload = multer({
   storage: multerStorage,
-  fileFilter: multerFilter
+  fileFilter: multerFilter,
 });
 
-export const uploadImage = upload.single('photo');
-export const uploadUserImage = upload.fields([{ name: 'avatar', maxCount: 1 }, { name: 'banner', maxCount: 1 }])
+exports.uploadImage = upload.single('photo');
+
+exports.uploadUserImage = upload.fields([
+  { name: 'avatar', maxCount: 1 },
+  { name: 'banner', maxCount: 1 },
+]);

@@ -1,19 +1,25 @@
-import express from 'express';
-import { protect } from '../controller/authController.js';
-import {
-  createLink,
-  getLink,
-  resizeLinkPhoto,
-  deleteLink,
-  editLink,
-} from '../controller/linkController.js';
-import { uploadImage } from '../utils/imageUpload.js';
+const express = require('express');
+const authController = require('../controller/authController.js');
+const linkController = require('../controller/linkController.js');
+const imageUpload = require('../utils/imageUpload.js');
 const router = express.Router();
 
-router.post('/addLink', protect, uploadImage, resizeLinkPhoto, createLink);
-router.delete('/deleteLink', protect, deleteLink);
-router.get('/getLink', getLink);
+router.post(
+  '/addLink',
+  authController.protect,
+  imageUpload.uploadImage,
+  linkController.resizeLinkPhoto,
+  linkController.createLink
+);
+router.delete('/deleteLink', authController.protect, linkController.deleteLink);
+router.get('/getLink', linkController.getLink);
 
-router.patch('/:id', protect, uploadImage, resizeLinkPhoto, editLink);
+router.patch(
+  '/:id',
+  authController.protect,
+  imageUpload.uploadImage,
+  linkController.resizeLinkPhoto,
+  linkController.editLink
+);
 
-export default router;
+module.exports = router;

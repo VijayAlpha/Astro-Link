@@ -1,33 +1,30 @@
-import express from "express";
-import {
-  signup,
-  login,
-  logout,
-  protect,
-  updatePassword,
-  forgotPassword,
-  resetPassword
-} from "../controller/authController.js";
-import {
-  getMe,
-  getUser,
-  updateMe,
-  resizeUserPhoto,
-} from "../controller/userController.js";
-import { uploadUserImage } from "../utils/imageUpload.js";
+const express = require('express');
+const authController = require('../controller/authController.js');
+const userController = require('../controller/userController.js');
+const imageController = require('../utils/imageUpload.js');
 
 const router = express.Router();
 
-router.post("/signup", signup);
-router.post("/login", login);
-router.post("/logout", logout);
-router.post("/forgotPassword", forgotPassword);
-router.patch("/resetPassword/:token", resetPassword);
+router.post('/signup', authController.signup);
+router.post('/login', authController.login);
+router.post('/logout', authController.logout);
+router.post('/forgotPassword', authController.forgotPassword);
+router.patch('/resetPassword/:token', authController.resetPassword);
 
-router.get("/:username", getUser);
+router.get('/:username', userController.getUser);
 
-router.get("/me", protect, getMe);
-router.patch("/updateMe", protect, uploadUserImage, resizeUserPhoto, updateMe);
-router.patch("/updateMyPassword", protect, updatePassword);
+router.get('/me', authController.protect, userController.getMe);
+router.patch(
+  '/updateMe',
+  authController.protect,
+  imageController.uploadUserImage,
+  userController.resizeUserPhoto,
+  userController.updateMe
+);
+router.patch(
+  '/updateMyPassword',
+  authController.protect,
+  authController.updatePassword
+);
 
-export default router;
+module.exports = router;

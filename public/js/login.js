@@ -7,8 +7,8 @@ export const login = async (email, password) => {
       url: '/api/v1/user/login',
       data: {
         email,
-        password
-      }
+        password,
+      },
     });
 
     if (res.data.status === 'success') {
@@ -18,12 +18,18 @@ export const login = async (email, password) => {
       }, 1000);
     }
   } catch (err) {
-    console.log(err.response)
+    console.log(err.response);
     showAlert('error', err.response.data.message);
   }
 };
 
-export const signup = async ( name , userName , email, password , passwordConfirm ) => {
+export const signup = async (
+  name,
+  userName,
+  email,
+  password,
+  passwordConfirm
+) => {
   try {
     const res = await axios({
       method: 'POST',
@@ -33,8 +39,8 @@ export const signup = async ( name , userName , email, password , passwordConfir
         userName,
         email,
         password,
-        passwordConfirm
-      }
+        passwordConfirm,
+      },
     });
 
     if (res.data.status === 'success') {
@@ -44,7 +50,7 @@ export const signup = async ( name , userName , email, password , passwordConfir
       }, 1000);
     }
   } catch (err) {
-    console.log(err.response)
+    console.log(err.response);
     showAlert('error', err.response.data.message);
   }
 };
