@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import rateLimit from "express-rate-limit";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
+import compression from "compression";
 import AppError from "./utils/appError.js";
 import globalErrorHandler from "./controller/errorController.js";
 import userRouter from "./routes/userRoute.js";
@@ -17,14 +18,22 @@ dotenv.config();
 app.set("view engine", "pug");
 app.set("views", "./views");
 
-
 app.use(express.static("./public"));
+
+//Limit request from same ip
+app.use('/api' , rateLimit({
+  max:100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests from this IP, please try again in an hour!"
+}))
 
 app.use(cors());
 
 app.use(express.json({ limit: "10kb" }));
 app.use(express.urlencoded({ extended: true, limit: "10kb" }));
 app.use(cookieParser());
+// to compress the res size to user
+app.use(compression());
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/link", linkRouter);
