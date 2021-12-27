@@ -1,6 +1,6 @@
 const express = require('express');
 const authController = require('../controller/authController.js');
-const linkController = require('../controller/linkController.js');
+const linkController = require('../controller/LinkController.js');
 const imageUpload = require('../utils/imageUpload.js');
 const router = express.Router();
 
