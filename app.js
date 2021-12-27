@@ -11,11 +11,11 @@ const userRouter = require('./routes/userRoute.js');
 const linkRouter = require('./routes/linkRoute.js');
 const viewRouter = require('./routes/viewRouter.js');
 
-// process.on('uncaughtException', err => {
-//   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
-//   console.log(err.name, err.message);
-//   process.exit(1);
-// });
+process.on('uncaughtException', err => {
+  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
 
 const app = express();
 
@@ -66,17 +66,17 @@ mongoose
   )
   .catch(error => console.log('ERROR:' + error.message));
 
-// process.on('unhandledRejection', err => {
-//   console.log('UNHANDLED REJECTION! 💥 Shutting down...');
-//   console.log(err.name, err.message);
-//   server.close(() => {
-//     process.exit(1);
-//   });
-// });
+process.on('unhandledRejection', err => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
 
-// process.on('SIGTERM', () => {
-//   console.log('👋 SIGTERM RECEIVED. Shutting down gracefully');
-//   server.close(() => {
-//     console.log('💥 Process terminated!');
-//   });
-// });
+process.on('SIGTERM', () => {
+  console.log('👋 SIGTERM RECEIVED. Shutting down gracefully');
+  server.close(() => {
+    console.log('💥 Process terminated!');
+  });
+});
