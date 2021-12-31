@@ -1,10 +1,10 @@
-const  crypto = require( 'crypto');
-const  { promisify } = require( 'util');
-const  jwt = require( 'jsonwebtoken');
-const  User = require( './../model/userModel.js');
-const  catchAsync = require( './../utils/catchAsync.js');
-const  AppError = require( './../utils/appError.js');
-const  Email = require( './../utils/email.js');
+const crypto = require('crypto');
+const { promisify } = require('util');
+const jwt = require('jsonwebtoken');
+const User = require('./../model/userModel.js');
+const catchAsync = require('./../utils/catchAsync.js');
+const AppError = require('./../utils/appError.js');
+const Email = require('./../utils/email.js');
 
 const signToken = id => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -45,7 +45,11 @@ exports.signup = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
-
+  if (process.env.NODE_ENV === 'production') {
+    const url = `${req.protocol}://${req.get('host')}/me`;
+    // console.log(url);
+    await new Email(newUser, url).sendWelcome();
+  }
   createSendToken(newUser, 201, req, res);
 });
 
