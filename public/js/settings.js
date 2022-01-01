@@ -31,3 +31,24 @@ export const userSettings = async (data, type) => {
     console.log(err.response);
   }
 };
+
+export const resetPassword = async (id, data) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: `/api/v1/user/resetPassword/${id}`,
+      data,
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Password Updated Successfully!');
+
+      window.setTimeout(() => {
+        location.assign('/me');
+      }, 1000);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+    console.log(err.response);
+  }
+};

@@ -1,6 +1,6 @@
 import { login, signup, forgotpassword } from './login.js';
 import { addLink, deleteLink, updateLink } from './link.js';
-import { userSettings } from './settings.js';
+import { userSettings , resetPassword} from './settings.js';
 
 const loginForm = document.querySelector('.form--login');
 const signupForm = document.querySelector('.form--signup');
@@ -8,6 +8,7 @@ const addLinkForm = document.querySelector('.form--add-link');
 const editLinkForm = document.querySelector('.form--edit-link');
 const userSettingsForm = document.querySelector('.form--user-settings');
 const forgotPasswordForm = document.querySelector('.form--forgot-password');
+const resetPasswordForm = document.querySelector('.form--reset-password');
 const userSocialSettingForm = document.querySelector(
   '.form--user-socialSettings'
 );
@@ -38,11 +39,6 @@ if (userSettingsForm) {
     if (profilePic) form.append('avatar', profilePic);
     if (bannerPic) form.append('banner', bannerPic);
 
-    // const name = document.getElementById('name').value;
-    // const userName = document.getElementById('user-name').value;
-    // const userBio = document.getElementById('user-bio').value;
-    // const email = document.getElementById('email').value;
-
     userSettings(form, 'data');
   });
 }
@@ -56,6 +52,23 @@ if(forgotPasswordForm){
   })
 }
 
+if(resetPasswordForm){
+  resetPasswordForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    document.querySelector('.btn--reset-password').textContent = 'Updating...';
+
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+    await resetPassword( resetPasswordForm.id , 
+      { password, passwordConfirm }
+    );
+
+    document.querySelector('.btn--rest-password').textContent = 'Save password';
+    document.getElementById('password-current').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password-confirm').value = '';
+  });
+}
 if (userSocialSettingForm) {
   userSocialSettingForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -93,7 +106,7 @@ if (userSocialSettingForm) {
     document.querySelector('.btn--save-data').textContent = 'Save';
   });
 }
-if (userPasswordForm)
+if (userPasswordForm){
   userPasswordForm.addEventListener('submit', async e => {
     e.preventDefault();
     document.querySelector('.btn--save-password').textContent = 'Updating...';
@@ -111,6 +124,7 @@ if (userPasswordForm)
     document.getElementById('password').value = '';
     document.getElementById('password-confirm').value = '';
   });
+}
 
 if (addLinkForm) {
   addLinkForm.addEventListener('submit', e => {

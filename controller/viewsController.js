@@ -89,8 +89,9 @@ exports.getForgotPassword = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.getRestPassword = catchAsync(async (req, res, next) => {
-  res.status(200).render('rest-password', {
-    title: 'Rest Password',
+exports.getResetPassword = catchAsync(async (req, res, next) => {
+  res.status(200).render('reset-password', {
+    title: 'Reset Password',
+    token: req.params.token
   });
 });
