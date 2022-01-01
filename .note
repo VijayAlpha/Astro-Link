@@ -5,6 +5,7 @@ FIX:
         (bcoz while giving the none sq image it takes it own shape)
 
 TODO: 
+    - Build Logged in user in home/page
     - Build forgot password (FE)
     - Better error handing in sign-up error
     - Add logo (FE)
