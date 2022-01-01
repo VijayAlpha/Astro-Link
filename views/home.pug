@@ -23,6 +23,9 @@ main.hero
         a.link.hero__btn.nav-bar__btn(href='/signup')
           | Create For Free
       li.nav-bar__item.text-base--2.text--h2
-        a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/login') Login
+        if user
+          a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/me')= `Logged in as ${user.userName}` 
+        else
+          a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/login') Login
   .hero__left
     img.hero__img(src='./img/HERO_IMAGE.png' alt='' srcset='')

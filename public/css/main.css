@@ -135,6 +135,12 @@ body {
   display: flex;
 }
 
+.flex-box--center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .text-center {
   text-align: center;
 }
@@ -261,6 +267,8 @@ body {
 .image-box__profile-img {
   background: #FFF;
   /* fallback for old browsers */
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   width: 15rem;
   -webkit-transform: translateY(-8rem);
           transform: translateY(-8rem);
@@ -313,6 +321,7 @@ body {
   margin: 1rem;
   border-radius: 1.5rem;
   border: 1px solid #eee;
+  font-family: inherit;
 }
 
 .input--image {
@@ -690,5 +699,5 @@ body {
   font-weight: 600;
   font-family: 'Segoe UI', sans-serif;
   margin: 1rem;
-  color: #666;
+  color: #000;
 }

@@ -4,7 +4,7 @@ const viewController = require('../controller/viewsController.js');
 
 const router = express.Router();
 
-router.get('/', viewController.home);
+router.get('/', authController.isLoggedIn , viewController.home);
 router.get('/:username', viewController.getUser);
 router.get('/signup', viewController.getSignupForm);
 router.get('/login', viewController.getLoginForm);

@@ -42,8 +42,10 @@ html(lang='en')
       div(class='image-box__profile-box')
         img(src=`img/users/${user.avatar}` alt=' ' class='image-box__profile-img')
     .text-box
-      h1(class='text-box__name')= user.name  
-      h1(class='text-box__user-name')= `@${user.userName}`
+      div(class="flex-box flex-box--center ma--top-side")
+        h1(class='text-box__user-name')= user.name
+        span(class="text-box__user-name ma--side") |
+        h1(class='text-box__user-name')= `@${user.userName}`
       p(class='text-box__user-bio')= user.userBio
     .social-link
       if loggedIn
