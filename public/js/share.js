@@ -1,7 +1,7 @@
 import { showAlert } from './alerts.js';
 
 const btn = document.querySelector('#profile-share-button');
-const userName = document.querySelector('.text-box__user-name').innerHTML;
+const userName = document.querySelector('#userName').innerHTML;
 const shareData = {
   text: `@${userName}`,
   url: `${window.location.hostname}/${userName}`,
@@ -10,7 +10,7 @@ const shareData = {
 // Share must be triggered by "user activation"
 if (btn) {
   btn.addEventListener('click', async () => {
-    if (navigator.share) {
+    if (navigator) {
       try {
         await navigator.share(shareData);
         showAlert('success', 'Shared successfully!');

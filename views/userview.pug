@@ -45,7 +45,7 @@ html(lang='en')
       div(class="flex-box flex-box--center ma--top-side")
         h1(class='text-box__user-name')= user.name
         span(class="text-box__user-name ma--side") |
-        h1(class='text-box__user-name')= `@${user.userName}`
+        h1(class='text-box__user-name' id="userName")= `@${user.userName}`
       p(class='text-box__user-bio')= user.userBio
     .social-link
       if loggedIn

@@ -1,10 +1,10 @@
 Problem:
-    - mailgun is not sending emails to real emails in production (for that you have to have your own domain)
+
 FIX: 
-    - style account profile image to fixed width and height
-        (bcoz while giving the none sq image it takes it own shape)
+
 
 TODO: 
+    - Add Delete ProfilePic/Banner Img in account settings
     - Better error handing in sign-up error
     - Add logo (FE)
     - Build DELETE user
