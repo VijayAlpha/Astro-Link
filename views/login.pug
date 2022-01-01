@@ -1,7 +1,7 @@
 extends base.pug
 
 block content
-    main
+    main.main-center
       // LOGIN PAGE
       .box-container.ma--lg.text-center
         .text--h1.color-primary Login
@@ -10,9 +10,9 @@ block content
       .box-container
         form.form--login.box-container
           label.ma--side.text-base--1(for='email') Email address
-          input#email.input--text(type='email' placeholder='Email' required='')
+          input#email.input--text(type='email' placeholder='your@example.com' required='')
           label.ma--side.text-base--1(for='password') Password
-          input#password.input--text(type='password' placeholder='Password' required='' minlength='8')
+          input#password.input--text(type='password' placeholder='your-strong-password' required='' minlength='8')
           button.btn.btn--primary.btn--login(type='submit') Login
       .box-container.ma--lg
         span.text-base--1.border-bottom.padding-bottom.ma--bottom

@@ -49,6 +49,14 @@ body__no-padding, .body__no-padding {
           flex-direction: column;
 }
 
+.main-center {
+  max-width: 50rem;
+  position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
 body {
   font-family: 'Signika', sans-serif;
   font-weight: 400;
@@ -267,9 +275,8 @@ body {
 .image-box__profile-img {
   background: #FFF;
   /* fallback for old browsers */
-  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
   width: 15rem;
+  height: 15rem;
   -webkit-transform: translateY(-8rem);
           transform: translateY(-8rem);
   padding: 1rem;

@@ -24,7 +24,7 @@ main.hero
           | Create For Free
       li.nav-bar__item.text-base--2.text--h2
         if user
-          a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/me')= `Logged in as ${user.userName}` 
+          a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/me')= `Welcome!  ${user.name}` 
         else
           a.link.hero__btn.nav-bar__btn.nav-bar__btn--out(href='/login') Login
   .hero__left
