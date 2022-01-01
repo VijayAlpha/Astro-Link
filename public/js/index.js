@@ -1,4 +1,4 @@
-import { login, signup } from './login.js';
+import { login, signup, forgotpassword } from './login.js';
 import { addLink, deleteLink, updateLink } from './link.js';
 import { userSettings } from './settings.js';
 
@@ -7,6 +7,7 @@ const signupForm = document.querySelector('.form--signup');
 const addLinkForm = document.querySelector('.form--add-link');
 const editLinkForm = document.querySelector('.form--edit-link');
 const userSettingsForm = document.querySelector('.form--user-settings');
+const forgotPasswordForm = document.querySelector('.form--forgot-password');
 const userSocialSettingForm = document.querySelector(
   '.form--user-socialSettings'
 );
@@ -45,6 +46,16 @@ if (userSettingsForm) {
     userSettings(form, 'data');
   });
 }
+
+if(forgotPasswordForm){
+  forgotPasswordForm.addEventListener('submit' , e=>{
+    e.preventDefault();
+    document.querySelector('.btn--forgot-password').textContent = 'Sending...';
+    const email = document.getElementById('email').value;
+    forgotpassword(email);
+  })
+}
+
 if (userSocialSettingForm) {
   userSocialSettingForm.addEventListener('submit', e => {
     e.preventDefault();

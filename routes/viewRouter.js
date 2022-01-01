@@ -9,6 +9,8 @@ router.get('/:username', viewController.getUser);
 router.get('/signup', viewController.getSignupForm);
 router.get('/login', viewController.getLoginForm);
 router.get('/logout', authController.logout);
+router.get('/forgotpassword' , viewController.getForgotPassword);
+router.get('/restpassword' , viewController.getRestPassword);
 router.get('/me', authController.protect, viewController.getMe);
 router.get('/settings', authController.protect, viewController.getSettings);
 router.get(

@@ -82,3 +82,15 @@ exports.getEditLink = catchAsync(async (req, res, next) => {
     link,
   });
 });
+
+exports.getForgotPassword = catchAsync(async (req, res, next) => {
+  res.status(200).render('forgot-password', {
+    title: 'Forgot Password',
+  });
+});
+
+exports.getRestPassword = catchAsync(async (req, res, next) => {
+  res.status(200).render('rest-password', {
+    title: 'Rest Password',
+  });
+});
