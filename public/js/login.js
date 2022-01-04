@@ -53,6 +53,7 @@ export const signup = async (
   } catch (err) {
     console.log(err.response);
     showAlert('error', err.response.data.message);
+    document.querySelector('.btn--sign-up').textContent = 'Create';
   }
 };
 
@@ -73,5 +74,6 @@ export const forgotpassword = async (email) => {
   } catch (err) {
     console.log(err.response);
     showAlert('error', err.response.data.message);
+    document.querySelector('.btn--forgot-password').textContent = 'Send';
   }
 };
