@@ -1,9 +1,10 @@
 Problem:
 
 FIX: 
-
-
+    - Link Description update is not working when the value is empty
 TODO: 
+    - Display error msg (FE)
+    - add linkedin account icon (FE)
     - Better error handing in sign-up error 
     - Error Page style (FE)
     - Add Delete ProfilePic/Banner Img in account settings (FE)

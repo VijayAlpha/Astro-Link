@@ -10,7 +10,7 @@ const shareData = {
 // Share must be triggered by "user activation"
 if (btn) {
   btn.addEventListener('click', async () => {
-    if (navigator) {
+    if (navigator.share){
       try {
         await navigator.share(shareData);
         showAlert('success', 'Shared successfully!');
