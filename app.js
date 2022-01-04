@@ -11,11 +11,11 @@ const userRouter = require('./routes/userRoute.js');
 const linkRouter = require('./routes/linkRoute.js');
 const viewRouter = require('./routes/viewRouter.js');
 
-// process.on('uncaughtException', err => {
-//   console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
-//   console.log(err.name, err.message);
-//   process.exit(1);
-// });
+process.on('uncaughtException', err => {
+  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
 
 const app = express();
 
@@ -54,6 +54,7 @@ app.use(globalErrorHandler);
 
 const PORT = process.env.PORT || 3000;
 let DB_URL = process.env.DB_CONNECTION_URL;
+let server;
 
 if (process.env.NODE_ENV === 'production') {
   DB_URL = process.env.PRODUCTION_DB_CONNECTION_URL;
@@ -65,7 +66,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() =>
-    app.listen(PORT, () =>
+    server = app.listen(PORT, () =>
       console.log(`server running on ${PORT} :${process.env.NODE_ENV}`)
     )
   )
