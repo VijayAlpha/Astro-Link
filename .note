@@ -4,7 +4,8 @@ FIX:
 
 
 TODO: 
-    - Add Delete ProfilePic/Banner Img in account settings
-    - Better error handing in sign-up error
+    - Better error handing in sign-up error 
+    - Error Page style (FE)
+    - Add Delete ProfilePic/Banner Img in account settings (FE)
     - Add logo (FE)
     - Build DELETE user
