@@ -48,6 +48,7 @@ export const signup = async (
       window.setTimeout(() => {
         location.assign('/me');
       }, 1000);
+      document.querySelector('.btn--sign-up').textContent = 'Create';
     }
   } catch (err) {
     console.log(err.response);

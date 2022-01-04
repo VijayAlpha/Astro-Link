@@ -1,12 +1,20 @@
 Problem:
 
+BUG: 
+    - The images in Profile and Link are not optimizing in preview [HTML/CSS] (FE)
+
 FIX: 
-    - Link Description update is not working when the value is empty
+    - Link Description update is not working when the value is empty [JS] (FE)
 TODO: 
     - Display error msg (FE)
-    - add linkedin account icon (FE)
     - Better error handing in sign-up error 
     - Error Page style (FE)
+    - Create Report/Contact Page (FE)(BE)
+    - Add more social account options (FE)
     - Add Delete ProfilePic/Banner Img in account settings (FE)
     - Add logo (FE)
     - Build DELETE user
+
+PRODUCTION: 
+    - Buy domain name
+    - update mailgun CNAME to app domain name !

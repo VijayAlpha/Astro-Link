@@ -179,7 +179,7 @@ if (loginForm)
 if (signupForm)
   signupForm.addEventListener('submit', e => {
     e.preventDefault();
-    document.querySelector('.btn--sign-up').textContent = 'Logging...';
+    document.querySelector('.btn--sign-up').textContent = 'Creating...';
 
     const name = document.getElementById('name').value;
     const userName = document.getElementById('user-name').value;
