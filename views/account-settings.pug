@@ -10,12 +10,12 @@ block content
           //- banner image 
           label.text-base--2.ma--side(for='banner-image' class='image-box__cover-box')
             if(user.banner)
-              img(src=`../img/users/${user.banner}` id="banner-img" alt=' ' class='image-box__cover-img')
+              div(style=`background-image: url(../img/users/${user.banner});` id="banner-img" alt=' ' class='image-box__cover-img')
           input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
           //- profile image
-          label.text-base--2.ma--side(for='profile-image' class='image-box__profile-box') 
+          label.text-base--2.ma--side(for='profile-image' class='image-box__profile-box image-box__profile-box--acc') 
             if(user.avatar)
-              img(src=`../img/users/${user.avatar}` id="profile-img" alt=' ' class='image-box__profile-img')
+              div(style=`background-image: url(../img/users/${user.avatar});` id="profile-img" alt=' ' class='image-box__profile-img')
           input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
           label.text-base--2.ma--side(for='name') Name
           input#name.input--text(type='text' value=`${user.name}` placeholder='Name')

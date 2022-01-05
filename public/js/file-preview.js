@@ -16,7 +16,7 @@ if (profileImageInput) {
     if (event.target.files.length > 0) {
       var src = URL.createObjectURL(event.target.files[0]);
       var preview = profileImage;
-      preview.src = src;
+      preview.style.backgroundImage = `url(${src})`;
     }
   });
 }
@@ -24,9 +24,10 @@ if (profileImageInput) {
 if (bannerImage) {
   bannerImageInput.addEventListener('change', function showPreview(event) {
     if (event.target.files.length > 0) {
+      console.log("Here!")
       var src = URL.createObjectURL(event.target.files[0]);
       var preview = bannerImage;
-      preview.src = src;
+      preview.style.backgroundImage = `url(${src})`;
     }
   });
 }
@@ -36,7 +37,7 @@ if (linkImageInput) {
     if (event.target.files.length > 0) {
       var src = URL.createObjectURL(event.target.files[0]);
       var preview = linkImage;
-      preview.src = src;
+      preview.style.backgroundImage = `url(${src})`;
     }
   });
 }
