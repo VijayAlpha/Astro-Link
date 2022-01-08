@@ -1,3 +1,4 @@
+const fs = require('fs');
 const sharp = require('sharp');
 const Link = require('../model/linkModel.js');
 const catchAsync = require('../utils/catchAsync.js');
@@ -10,7 +11,7 @@ exports.resizeLinkPhoto = catchAsync(async (req, res, next) => {
   await sharp(req.file.buffer)
     .resize(250, 250)
     .toFormat('jpeg')
-    .jpeg({ quality: 90 })
+    .jpeg({ quality: 60 })
     .toFile(`public/img/link-image/${req.file.filename}`);
 
   next();
@@ -19,8 +20,12 @@ exports.resizeLinkPhoto = catchAsync(async (req, res, next) => {
 exports.createLink = catchAsync(async (req, res, next) => {
   if (!req.body.user) req.body.user = req.user.id;
 
-  if (req.file) req.body.photo = req.file.filename;
-
+  if (req.file) {
+    req.body.photo = {
+      imgData:  fs.readFileSync(`public/img/link-image/${req.file.filename}`),
+      contentType: 'image/jpeg'
+    }
+  }
   const link = await Link.create(req.body);
 
   res.status(201).json({
@@ -30,7 +35,12 @@ exports.createLink = catchAsync(async (req, res, next) => {
 });
 
 exports.editLink = catchAsync(async (req, res, next) => {
-  if (req.file) req.body.photo = req.file.filename;
+  if (req.file) {
+    req.body.photo = {
+      imgData:  fs.readFileSync(`public/img/link-image/${req.file.filename}`),
+      contentType: 'image/jpeg'
+    }
+  }
 
   const link = await Link.findById(req.params.id);
 
