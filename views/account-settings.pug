@@ -9,13 +9,18 @@ block content
       .box-container
           //- banner image 
           label.text-base--2.ma--side(for='banner-image' class='image-box__cover-box')
-            if(user.banner)
-              div(style=`background-image: url(../img/users/${user.banner});` id="banner-img" alt=' ' class='image-box__cover-img')
+            if user.banner.imgData
+              div(style=`background-image: url(data:image/${user.banner.contentType};base64,${user.banner.imgData.toString('base64')});` id="banner-img" alt=' ' class='image-box__cover-img')
+            else
+              //- empty div for image-preview if there is no img form database
+              div(id="banner-img" class='image-box__cover-img')
           input#banner-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Banner Image')
           //- profile image
           label.text-base--2.ma--side(for='profile-image' class='image-box__profile-box image-box__profile-box--acc') 
-            if(user.avatar)
-              div(style=`background-image: url(../img/users/${user.avatar});` id="profile-img" alt=' ' class='image-box__profile-img')
+            if user.avatar.imgData
+              div(style=`background-image: url(data:image/${user.avatar.contentType};base64,${user.avatar.imgData.toString('base64')});` id="profile-img" alt=' ' class='image-box__profile-img')
+            else
+              div(style=`background-image: url(../img/users/default.jpg);` id="profile-img" class='image-box__profile-img')
           input#profile-image.input--text(type='file' style="display:none" accept='image/*' placeholder='Profile Image')
           label.text-base--2.ma--side(for='name') Name
           input#name.input--text(type='text' value=`${user.name}` placeholder='Name')
