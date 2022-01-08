@@ -1,3 +1,4 @@
+const fs = require('fs');
 const sharp = require('sharp');
 const User = require('../model/userModel.js');
 const catchAsync = require('../utils/catchAsync.js');
@@ -12,7 +13,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     await sharp(req.files.avatar[0].buffer)
       .resize(500, 500)
       .toFormat('jpeg')
-      .jpeg({ quality: 90 })
+      .jpeg({ quality: 80 })
       .toFile(`public/img/users/${req.files.avatar[0].filename}`);
   }
 
@@ -20,6 +21,7 @@ exports.resizeUserPhoto = catchAsync(async (req, res, next) => {
     req.files.banner[0].filename = `user-banner-${req.user.id}.jpeg`;
 
     await sharp(req.files.banner[0].buffer)
+      .resize(600, 200)
       .toFormat('jpeg')
       .jpeg({ quality: 90 })
       .toFile(`public/img/users/${req.files.banner[0].filename}`);
@@ -86,8 +88,18 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   );
 
   if (req.files) {
-    if (req.files.avatar) filteredBody.avatar = req.files.avatar[0].filename;
-    if (req.files.banner) filteredBody.banner = req.files.banner[0].filename;
+    if (req.files.avatar) {
+      filteredBody.avatar = {
+        imgData:  fs.readFileSync(`public/img/users/${req.files.avatar[0].filename}`),
+        contentType: 'image/jpeg'
+      }
+    };
+    if (req.files.banner) {
+      filteredBody.banner = {
+        imgData:  fs.readFileSync(`public/img/users/${req.files.banner[0].filename}`),
+        contentType: 'image/jpeg'
+      }
+    };
   }
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {

@@ -24,11 +24,12 @@ const userSchema = new mongoose.Schema(
       validate: [validator.isEmail, 'Please provide a valid email'],
     },
     avatar: {
-      type: String,
-      default: 'default.jpg',
+      imgData: Buffer,
+      contentType: String,
     },
-    banner: {
-      type: String,
+    banner:{
+      imgData: Buffer,
+      contentType: String,
     },
     password: {
       type: String,
