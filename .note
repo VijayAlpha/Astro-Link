@@ -1,13 +1,11 @@
-Problem:
-    - heroku don't store the uploaded files in filesystem / use another service to store the files (May be amazon S3)
 FIX: 
     - Link Description update is not working when the value is empty [JS] (FE)
 TODO: 
-    - Display error msg (FE)
     - Better error handing in sign-up error 
+    - Display error msg (FE)
     - Error Page style (FE)
-    - Create Report/Contact Page (FE)(BE)
     - Add more social account options (FE)
+    - Create Report/Contact Page (FE)(BE)
     - Add Delete ProfilePic/Banner Img in account settings (FE)
     - Add logo (FE)
     - Build DELETE user
