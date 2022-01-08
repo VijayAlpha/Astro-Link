@@ -96,7 +96,7 @@ html(lang='en')
         each link in user.links
           .media-link__box(id=`${link.id}` data-link=`${link.link}`)
             if link.photo
-              img.media-link__img(src=`./img/link-image/${link.photo}` alt='')
+              img.media-link__img(src=`data:image/${link.photo.contentType};base64,${link.photo.imgData ? link.photo.imgData.toString('base64') : ""}` alt='')
             .media-link__text-holder
               h4.media-link__title= link.linkName
               if link.linkDescription

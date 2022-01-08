@@ -44,7 +44,8 @@ if (linkImageInput) {
 if (linkImageDelete) {
   linkImageDelete.addEventListener('click', e => {
     e.preventDefault();
-    linkImage.src = '../img/link-image/add-image.svg';
+    var preview = linkImage;
+    preview.style.backgroundImage = '../img/link-image/add-image.svg';
     const photo = undefined;
 
     const form = new FormData();

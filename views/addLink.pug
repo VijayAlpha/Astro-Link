@@ -15,7 +15,7 @@ block content
         label.text-base--2.ma--side(for='link-image') Link Image
         label.input--text.flex-box(for="link-image")
           div.input--image
-            div(id="input--image-preview" class="input--image-preview" style=`background-image: url(${link ? (link.photo ? `../img/link-image/${link.photo}` : "../img/link-image/add-image.svg") : "../img/link-image/add-image.svg"});`)
+            div(id="input--image-preview" class="input--image-preview" style=`background-image: url(${link ? (link.photo.imgData ? `data:image/${link.photo.contentType};base64,${link.photo.imgData.toString('base64')}` : "../img/link-image/add-image.svg") : "../img/link-image/add-image.svg"});`)
           div(class="btn btn--secondary text-base--2 text-center") Add
           button(class="btn btn--secondary text-base--2"  id="link-image--delete") Delete
         input(id="link-image" style="display: none" class="input--text" accept="image/*" type="file" placeholder="Link Image")
