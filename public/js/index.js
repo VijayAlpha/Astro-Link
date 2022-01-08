@@ -17,12 +17,42 @@ const mediaLinkOption_linkDelete = document.querySelector(
   '#link-option--delete'
 );
 
-if (mediaLinkOption_linkDelete) {
-  mediaLinkOption_linkDelete.addEventListener('click', () => {
-    deleteLink(mediaLinkOption_linkDelete.dataset.linkId);
+// LOGIN CONTROLLER login.js
+if (loginForm){
+  loginForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    document.querySelector('.btn--login').textContent = 'Logging...';
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    await login(email, password);
+    document.querySelector('.btn--login').textContent = 'Login';
   });
 }
+if (signupForm){
+  signupForm.addEventListener('submit',  async e => {
+    e.preventDefault();
+    document.querySelector('.btn--sign-up').textContent = 'Creating...';
 
+    const name = document.getElementById('name').value;
+    const userName = document.getElementById('user-name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('confirm-password').value;
+    await  signup(name, userName.replace(/ /g, "").toLowerCase(), email, password, passwordConfirm);
+    document.querySelector('.btn--sign-up').textContent = 'Create';
+
+  });
+}
+if(forgotPasswordForm){
+  forgotPasswordForm.addEventListener('submit' , e=>{
+    e.preventDefault();
+    document.querySelector('.btn--forgot-password').textContent = 'Sending...';
+    const email = document.getElementById('email').value;
+    forgotpassword(email);
+  })
+}
+
+// USER SETTINGS settings.js
 if (userSettingsForm) {
   userSettingsForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -40,33 +70,6 @@ if (userSettingsForm) {
     if (bannerPic) form.append('banner', bannerPic);
 
     userSettings(form, 'data');
-  });
-}
-
-if(forgotPasswordForm){
-  forgotPasswordForm.addEventListener('submit' , e=>{
-    e.preventDefault();
-    document.querySelector('.btn--forgot-password').textContent = 'Sending...';
-    const email = document.getElementById('email').value;
-    forgotpassword(email);
-  })
-}
-
-if(resetPasswordForm){
-  resetPasswordForm.addEventListener('submit', async e => {
-    e.preventDefault();
-    document.querySelector('.btn--reset-password').textContent = 'Updating...';
-
-    const password = document.getElementById('password').value;
-    const passwordConfirm = document.getElementById('password-confirm').value;
-    await resetPassword( resetPasswordForm.id , 
-      { password, passwordConfirm }
-    );
-
-    document.querySelector('.btn--rest-password').textContent = 'Save password';
-    document.getElementById('password-current').value = '';
-    document.getElementById('password').value = '';
-    document.getElementById('password-confirm').value = '';
   });
 }
 if (userSocialSettingForm) {
@@ -125,7 +128,26 @@ if (userPasswordForm){
     document.getElementById('password-confirm').value = '';
   });
 }
+if(resetPasswordForm){
+  resetPasswordForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    document.querySelector('.btn--reset-password').textContent = 'Updating...';
 
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+    await resetPassword( resetPasswordForm.id , 
+      { password, passwordConfirm }
+    );
+
+    document.querySelector('.btn--rest-password').textContent = 'Save password';
+    document.getElementById('password-current').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password-confirm').value = '';
+  });
+}
+
+// LINK CONTROLLER link.js
+// ADD LINK
 if (addLinkForm) {
   addLinkForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -147,7 +169,7 @@ if (addLinkForm) {
     addLink(form);
   });
 }
-
+// EDIT LINK
 if (editLinkForm) {
   editLinkForm.addEventListener('submit', e => {
     e.preventDefault();
@@ -166,25 +188,10 @@ if (editLinkForm) {
     updateLink(editLinkForm.id, form);
   });
 }
-
-if (loginForm)
-  loginForm.addEventListener('submit', e => {
-    e.preventDefault();
-    document.querySelector('.btn--login').textContent = 'Logging...';
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    login(email, password);
+// DELETE LINK
+if (mediaLinkOption_linkDelete) {
+  mediaLinkOption_linkDelete.addEventListener('click', () => {
+    deleteLink(mediaLinkOption_linkDelete.dataset.linkId);
   });
+}
 
-if (signupForm)
-  signupForm.addEventListener('submit', e => {
-    e.preventDefault();
-    document.querySelector('.btn--sign-up').textContent = 'Creating...';
-
-    const name = document.getElementById('name').value;
-    const userName = document.getElementById('user-name').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const passwordConfirm = document.getElementById('confirm-password').value;
-    signup(name, userName.replace(/ /g, "").toLowerCase(), email, password, passwordConfirm);
-  });

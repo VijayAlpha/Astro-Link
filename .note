@@ -1,8 +1,5 @@
 Problem:
-
-BUG: 
-    - The images in Profile and Link are not optimizing in preview [HTML/CSS] (FE)
-
+    - heroku don't store the uploaded files in filesystem / use another service to store the files (May be amazon S3)
 FIX: 
     - Link Description update is not working when the value is empty [JS] (FE)
 TODO: 
