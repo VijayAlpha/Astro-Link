@@ -54,7 +54,7 @@ if(forgotPasswordForm){
 
 // USER SETTINGS settings.js
 if (userSettingsForm) {
-  userSettingsForm.addEventListener('submit', e => {
+  userSettingsForm.addEventListener('submit', async e => {
     e.preventDefault();
     document.querySelector('.btn--save-data').textContent = 'Updating...';
 
@@ -69,11 +69,12 @@ if (userSettingsForm) {
     if (profilePic) form.append('avatar', profilePic);
     if (bannerPic) form.append('banner', bannerPic);
 
-    userSettings(form, 'data');
+    await userSettings(form, 'data');
+    document.querySelector('.btn--save-data').textContent = 'Update';
   });
 }
 if (userSocialSettingForm) {
-  userSocialSettingForm.addEventListener('submit', e => {
+  userSocialSettingForm.addEventListener('submit', async e => {
     e.preventDefault();
 
     document.querySelector('.btn--save-data').textContent = 'Updating...';
@@ -105,7 +106,7 @@ if (userSocialSettingForm) {
       data.snapchat = snapchat;
     }
 
-    userSettings(data, 'social');
+    await userSettings(data, 'social');
     document.querySelector('.btn--save-data').textContent = 'Save';
   });
 }

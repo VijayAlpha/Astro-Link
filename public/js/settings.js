@@ -27,8 +27,8 @@ export const userSettings = async (data, type) => {
       }, 500);
     }
   } catch (err) {
-    showAlert('error', err.response.data.message);
     console.log(err.response);
+    showAlert('error', err.response.data.message);
   }
 };
 
