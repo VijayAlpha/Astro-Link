@@ -9,15 +9,15 @@ block content
       .box-container
          form.form--signup.box-container
           label.ma--side.text-base--1(for='user-name') Username
-          input#user-name.input--text(type='text' placeholder='User name')
+          input#user-name.input--text(type='text' placeholder='User name' required)
           label.ma--side.text-base--1(for='name') Your Name
-          input#name.input--text(type='text' placeholder='Name')
+          input#name.input--text(type='text' placeholder='Name' required) 
           label.ma--side.text-base--1(for='email') Email address
-          input#email.input--text(type='email' placeholder='Email')
+          input#email.input--text(type='email' placeholder='Email' required)
           label.ma--side.text-base--1(for='password') Password
-          input#password.input--text(type='password' placeholder='Password')
+          input#password.input--text(type='password' placeholder='Password'  minlength="8" required)
           label.ma--side.text-base--1(for='confirm-password') Password confirm
-          input#confirm-password.input--text(type='password' placeholder='Password Confirm')
+          input#confirm-password.input--text(type='password' placeholder='Password Confirm'  minlength="8" required)
           button.btn.btn--primary.btn--sign-up(type='submit') Create
       .box-container.ma--lg
          span.text-base--1
