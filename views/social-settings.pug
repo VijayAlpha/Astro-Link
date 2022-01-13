@@ -11,11 +11,13 @@ block content
       label.text-base--2.ma--side Phone
       input#social-phone-number.input--text(type='number' placeholder='Phone number' value=`${user.socialLinks.phone ? user.socialLinks.phone : ""}`)
       label.text-base--2.ma--side Instagram
-      input#social-instagram.input--text(type='text' placeholder='Instagram' value=`${user.socialLinks.instagram ? user.socialLinks.instagram : ""}`)
+      input#social-instagram.input--text(type='text' placeholder='Instagram Username' value=`${user.socialLinks.instagram ? user.socialLinks.instagram : ""}`)
       label.text-base--2.ma--side Twitter
-      input#social-twitter.input--text(type='text' placeholder='twitter' value=`${user.socialLinks.twitter ? user.socialLinks.twitter : ""}`)
+      input#social-twitter.input--text(type='text' placeholder='Twitter Username' value=`${user.socialLinks.twitter ? user.socialLinks.twitter : ""}`)
       label.text-base--2.ma--side Snapchat
-      input#social-snapchat.input--text(type='text' placeholder='Snapchat' value=`${user.socialLinks.snapchat ? user.socialLinks.snapchat : "" }`)
+      input#social-snapchat.input--text(type='text' placeholder='Snapchat Username' value=`${user.socialLinks.snapchat ? user.socialLinks.snapchat : "" }`)
       label.text-base--2.ma--side Clubhouse
-      input#social-clubhouse.input--text(type='text' placeholder='Clubhouse' value=`${user.socialLinks.clubhouse ? user.socialLinks.clubhouse : "" }`)
+      input#social-clubhouse.input--text(type='text' placeholder='Clubhouse Username' value=`${user.socialLinks.clubhouse ? user.socialLinks.clubhouse : "" }`)
+      label.text-base--2.ma--side FaceBook
+      input#social-facebook.input--text(type='text' placeholder='Profile URL' value=`${user.socialLinks.facebook? user.socialLinks.facebook: "" }`)
       button.btn.btn--primary.btn--save-data Save

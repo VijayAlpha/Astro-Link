@@ -83,7 +83,8 @@ if (userSocialSettingForm) {
       instagram = document.getElementById('social-instagram').value,
       twitter = document.getElementById('social-twitter').value,
       snapchat = document.getElementById('social-snapchat').value,
-      clubhouse = document.getElementById('social-clubhouse').value;
+      clubhouse = document.getElementById('social-clubhouse').value,
+      facebook = document.getElementById('social-facebook').value;
 
     const data = {};
 
@@ -104,6 +105,9 @@ if (userSocialSettingForm) {
     }
     if (snapchat && snapchat !== 'undefined') {
       data.snapchat = snapchat;
+    }
+    if (facebook && facebook !== 'undefined') {
+      data.facebook = facebook;
     }
 
     await userSettings(data, 'social');
