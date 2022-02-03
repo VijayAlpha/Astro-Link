@@ -4,7 +4,9 @@ const catchAsync = require('../utils/catchAsync.js');
 const AppError = require('../utils/appError.js');
 
 exports.home = catchAsync(async (req, res, next) => {
-  res.status(200).render('home');
+  const users = await User.find({});
+
+  res.status(200).render('home' , {users});
 });
 
 exports.getUser = catchAsync(async (req, res, next) => {

@@ -67,6 +67,17 @@ exports.getUser = catchAsync(async (req, res, next) => {
   }
 });
 
+exports.getUsers = catchAsync(async (req , res , next) => {
+  const users = await User.find({});
+
+  res.status(200).json({
+    status: 'success',
+    data: {
+      users,
+    },
+  });
+})
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm) {
     return next(
